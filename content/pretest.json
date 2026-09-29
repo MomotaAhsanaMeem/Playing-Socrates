@@ -1,0 +1,122 @@
+[
+  {
+    "id": "A1",
+    "question": "Which organelle is the primary site of photosynthesis in plant cells?",
+    "options": [
+      "Mitochondrion",
+      "Ribosome",
+      "Chloroplast",
+      "Vacuole"
+    ],
+    "correctIndex": 2,
+    "concept": "chloroplast-structure"
+  },
+  {
+    "id": "A2",
+    "question": "What is the overall chemical equation for photosynthesis?",
+    "options": [
+      "6CO₂ + 6H₂O → C₆H₁₂O₆ + 6O₂",
+      "C₆H₁₂O₆ + 6O₂ → 6CO₂ + 6H₂O",
+      "6CO₂ + 6O₂ → C₆H₁₂O₆ + 6H₂O",
+      "6H₂O + 6O₂ → C₆H₁₂O₆ + 6CO₂"
+    ],
+    "correctIndex": 0,
+    "concept": "overall-equation"
+  },
+  {
+    "id": "A3",
+    "question": "In which part of the chloroplast do the light-dependent reactions occur?",
+    "options": [
+      "Stroma",
+      "Outer membrane",
+      "Thylakoid membrane",
+      "Intermembrane space"
+    ],
+    "correctIndex": 2,
+    "concept": "light-reactions"
+  },
+  {
+    "id": "A4",
+    "question": "What pigment is primarily responsible for absorbing light energy in most plants?",
+    "options": [
+      "Carotenoid",
+      "Chlorophyll a",
+      "Xanthophyll",
+      "Phycocyanin"
+    ],
+    "correctIndex": 1,
+    "concept": "light-absorption"
+  },
+  {
+    "id": "A5",
+    "question": "Which of the following is a direct product of the light-dependent reactions?",
+    "options": [
+      "Glucose",
+      "Carbon dioxide",
+      "ATP and NADPH",
+      "Starch"
+    ],
+    "correctIndex": 2,
+    "concept": "light-reactions"
+  },
+  {
+    "id": "A6",
+    "question": "Where does the Calvin cycle (light-independent reactions) take place?",
+    "options": [
+      "Thylakoid lumen",
+      "Outer membrane",
+      "Cytoplasm",
+      "Stroma of the chloroplast"
+    ],
+    "correctIndex": 3,
+    "concept": "calvin-cycle"
+  },
+  {
+    "id": "A7",
+    "question": "Which molecule is fixed (combined with CO₂) at the start of the Calvin cycle?",
+    "options": [
+      "ATP",
+      "RuBP (ribulose-1,5-bisphosphate)",
+      "G3P (glyceraldehyde-3-phosphate)",
+      "NADPH"
+    ],
+    "correctIndex": 1,
+    "concept": "calvin-cycle"
+  },
+  {
+    "id": "A8",
+    "question": "What gas is released as a by-product of the light-dependent reactions?",
+    "options": [
+      "Nitrogen",
+      "Carbon dioxide",
+      "Oxygen",
+      "Hydrogen"
+    ],
+    "correctIndex": 2,
+    "concept": "light-reactions"
+  },
+  {
+    "id": "A9",
+    "question": "Which wavelengths of light are most effectively absorbed by chlorophyll?",
+    "options": [
+      "Green and yellow",
+      "Red and blue-violet",
+      "Orange and indigo",
+      "Ultraviolet and infrared"
+    ],
+    "correctIndex": 1,
+    "concept": "light-absorption"
+  },
+  {
+    "id": "A10",
+    "question": "What is the role of water in the light-dependent stage of photosynthesis?",
+    "options": [
+      "It is used to build glucose directly",
+      "It acts as a carrier of electrons to the Calvin cycle",
+      "It is split (photolysed) to release electrons, protons, and oxygen",
+      "It absorbs light energy alongside chlorophyll"
+    ],
+    "correctIndex": 2,
+    "concept": "photolysis"
+  }
+]

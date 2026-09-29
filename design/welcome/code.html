@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+
+<html class="h-full" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Welcome - Playing Socrates</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@600;700&amp;family=Inter:wght@500;600&amp;family=Source+Serif+4:wght@400&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-container-low": "#f3f3f6",
+                      "on-primary-container": "#8ebdf9",
+                      "primary": "#00355f",
+                      "secondary-container": "#cbe7f5",
+                      "inverse-primary": "#a0c9ff",
+                      "outline-variant": "#c2c7d1",
+                      "outline": "#727780",
+                      "on-secondary": "#ffffff",
+                      "on-tertiary-container": "#adbcc6",
+                      "on-background": "#1a1c1e",
+                      "inverse-on-surface": "#f0f0f3",
+                      "primary-fixed-dim": "#a0c9ff",
+                      "secondary-fixed-dim": "#afcbd8",
+                      "tertiary-container": "#3e4c55",
+                      "inverse-surface": "#2f3133",
+                      "primary-fixed": "#d2e4ff",
+                      "secondary": "#48626e",
+                      "tertiary-fixed-dim": "#bac9d3",
+                      "on-secondary-fixed": "#021f29",
+                      "surface-container": "#eeeef0",
+                      "on-primary-fixed": "#001c37",
+                      "surface-dim": "#dadadc",
+                      "on-secondary-fixed-variant": "#304a55",
+                      "primary-container": "#0f4c81",
+                      "on-tertiary-fixed-variant": "#3b4951",
+                      "tertiary-fixed": "#d6e5ef",
+                      "surface-tint": "#2d6197",
+                      "on-tertiary": "#ffffff",
+                      "on-error": "#ffffff",
+                      "surface-container-lowest": "#ffffff",
+                      "surface-container-high": "#e8e8ea",
+                      "error": "#ba1a1a",
+                      "on-error-container": "#93000a",
+                      "surface-container-highest": "#e2e2e5",
+                      "on-tertiary-fixed": "#0f1d25",
+                      "tertiary": "#28353e",
+                      "secondary-fixed": "#cbe7f5",
+                      "surface": "#f9f9fc",
+                      "error-container": "#ffdad6",
+                      "on-primary": "#ffffff",
+                      "on-secondary-container": "#4e6874",
+                      "on-primary-fixed-variant": "#07497d",
+                      "background": "#f9f9fc",
+                      "surface-variant": "#e2e2e5",
+                      "on-surface": "#1a1c1e",
+                      "surface-bright": "#f9f9fc",
+                      "on-surface-variant": "#42474f"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "gutter": "24px",
+                      "section-gap": "64px",
+                      "container-max": "1140px",
+                      "unit": "8px",
+                      "margin-mobile": "16px",
+                      "margin-desktop": "40px"
+              },
+              "fontFamily": {
+                      "display-lg": [
+                              "Hanken Grotesk"
+                      ],
+                      "headline-lg-mobile": [
+                              "Hanken Grotesk"
+                      ],
+                      "body-md": [
+                              "\"Source Serif 4\""
+                      ],
+                      "headline-lg": [
+                              "Hanken Grotesk"
+                      ],
+                      "body-sm": [
+                              "\"Source Serif 4\""
+                      ],
+                      "label-md": [
+                              "Inter"
+                      ],
+                      "label-caps": [
+                              "Inter"
+                      ]
+              },
+              "fontSize": {
+                      "display-lg": [
+                              "48px",
+                              {
+                                      "lineHeight": "56px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "headline-lg-mobile": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-md": [
+                              "18px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-lg": [
+                              "32px",
+                              {
+                                      "lineHeight": "40px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-sm": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "label-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "letterSpacing": "0.01em",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "label-caps": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "600"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+<style>
+        body { background-color: #f9f9fc; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0;
+        }
+        .filled-icon .material-symbols-outlined {
+            font-variation-settings: 'FILL' 1;
+        }
+      </style>
+</head>
+<body class="h-full text-on-surface antialiased flex flex-col md:flex-row">
+<!-- SideNavBar -->
+<nav class="hidden md:flex h-screen w-64 fixed left-0 top-0 bg-surface-container-low border-r border-outline-variant flex-col py-8 z-40">
+<div class="px-gutter mb-8">
+<h1 class="font-display-lg text-headline-lg-mobile md:text-headline-lg text-primary tracking-tight">Onboarding</h1>
+<p class="font-label-md text-label-md text-on-surface-variant mt-2">Step 1 of 9</p>
+</div>
+<div class="flex-1 overflow-y-auto w-full">
+<ul class="space-y-2 w-full flex flex-col">
+<!-- Consent (Inactive) -->
+<li>
+<a class="flex items-center px-gutter py-3 w-full text-on-surface-variant opacity-50 cursor-not-allowed hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined mr-3">assignment</span>
+<span class="font-label-md text-label-md">Consent</span>
+</a>
+</li>
+<!-- Welcome (Active) -->
+<li>
+<a class="flex items-center px-gutter py-3 w-full text-primary font-bold border-l-4 border-primary bg-primary-container/10" href="#">
+<span class="material-symbols-outlined mr-3">waving_hand</span>
+<span class="font-label-md text-label-md">Welcome</span>
+</a>
+</li>
+<!-- Pre-Test (Inactive) -->
+<li>
+<a class="flex items-center px-gutter py-3 w-full text-on-surface-variant opacity-50 cursor-not-allowed pointer-events-none" href="#">
+<span class="material-symbols-outlined mr-3">quiz</span>
+<span class="font-label-md text-label-md">Pre-Test</span>
+</a>
+</li>
+<!-- AI Tutorial (Inactive) -->
+<li>
+<a class="flex items-center px-gutter py-3 w-full text-on-surface-variant opacity-50 cursor-not-allowed pointer-events-none" href="#">
+<span class="material-symbols-outlined mr-3">smart_toy</span>
+<span class="font-label-md text-label-md">AI Tutorial</span>
+</a>
+</li>
+<!-- HCI Theory (Inactive) -->
+<li>
+<a class="flex items-center px-gutter py-3 w-full text-on-surface-variant opacity-50 cursor-not-allowed pointer-events-none" href="#">
+<span class="material-symbols-outlined mr-3">school</span>
+<span class="font-label-md text-label-md">HCI Theory</span>
+</a>
+</li>
+<!-- Socratic Method (Inactive) -->
+<li>
+<a class="flex items-center px-gutter py-3 w-full text-on-surface-variant opacity-50 cursor-not-allowed pointer-events-none" href="#">
+<span class="material-symbols-outlined mr-3">psychology</span>
+<span class="font-label-md text-label-md">Socratic Method</span>
+</a>
+</li>
+<!-- Practice (Inactive) -->
+<li>
+<a class="flex items-center px-gutter py-3 w-full text-on-surface-variant opacity-50 cursor-not-allowed pointer-events-none" href="#">
+<span class="material-symbols-outlined mr-3">edit_note</span>
+<span class="font-label-md text-label-md">Practice</span>
+</a>
+</li>
+<!-- Post-Test (Inactive) -->
+<li>
+<a class="flex items-center px-gutter py-3 w-full text-on-surface-variant opacity-50 cursor-not-allowed pointer-events-none" href="#">
+<span class="material-symbols-outlined mr-3">fact_check</span>
+<span class="font-label-md text-label-md">Post-Test</span>
+</a>
+</li>
+<!-- Feedback (Inactive) -->
+<li>
+<a class="flex items-center px-gutter py-3 w-full text-on-surface-variant opacity-50 cursor-not-allowed pointer-events-none" href="#">
+<span class="material-symbols-outlined mr-3">rate_review</span>
+<span class="font-label-md text-label-md">Feedback</span>
+</a>
+</li>
+</ul>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="flex-1 md:ml-64 relative min-h-screen">
+<!-- TopAppBar (Mobile Only or sticky top context) -->
+<header class="md:hidden fixed top-0 w-full bg-surface border-b border-outline-variant z-30 flex justify-between items-center px-gutter py-4">
+<span class="font-display-lg text-headline-lg-mobile text-primary tracking-tight">Playing Socrates</span>
+<div class="text-on-surface-variant font-label-md text-label-md">ID: Participant-204</div>
+</header>
+<!-- Desktop Top Context (Matches TopAppBar JSON subtly) -->
+<div class="hidden md:flex justify-end items-center px-gutter py-4 w-full max-w-container-max mx-auto h-16 border-b border-outline-variant/30 sticky top-0 bg-background/80 backdrop-blur-md z-20">
+<div class="text-on-surface-variant font-label-md text-label-md flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">account_circle</span>
+                ID: Participant-204
+            </div>
+</div>
+<div class="w-full max-w-[720px] mx-auto px-margin-mobile md:px-0 pt-24 md:pt-16 pb-24">
+<!-- Hero Header -->
+<div class="mb-12 text-center mt-8">
+<div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary-container text-on-primary mb-6 shadow-sm">
+<span class="material-symbols-outlined text-[32px] filled-icon">waving_hand</span>
+</div>
+<h1 class="font-display-lg text-headline-lg-mobile md:text-display-lg text-on-background mb-4">Welcome to the Playing Socrates Study</h1>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-lg mx-auto">
+                    An exploration of AI-assisted learning and Socratic inquiry.
+                </p>
+</div>
+<!-- Intro Card -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-8 mb-section-gap shadow-[0_2px_8px_rgba(0,0,0,0.02)] transition-colors hover:border-outline duration-300">
+<div class="space-y-6 text-on-surface font-body-md text-body-md leading-relaxed">
+<p>
+                        Thank you for participating in this research study. We are investigating how generative AI can be utilized not just as an answer engine, but as a pedagogical partner that guides students through complex topics using the Socratic method.
+                    </p>
+<div class="bg-tertiary-fixed border-l-4 border-primary p-6 rounded-r-lg mt-6 mb-6">
+<div class="flex items-start gap-4">
+<span class="material-symbols-outlined text-primary mt-1">psychology</span>
+<div>
+<h3 class="font-label-md text-label-md font-bold text-on-surface mb-1 uppercase tracking-wide">The Goal</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">
+                                    Our hypothesis is that guided inquiry—prompting you to think critically rather than providing direct answers—leads to deeper conceptual understanding in Human-Computer Interaction (HCI) theory.
+                                </p>
+</div>
+</div>
+</div>
+<p>
+                        Over the next sequence of steps, you will complete a brief pre-test, learn how to interact with the AI tutor, engage in a study session focused on HCI concepts, and conclude with a post-test and feedback survey. 
+                    </p>
+<p class="text-on-surface-variant font-body-sm text-body-sm italic">
+                        Estimated time to complete: 45-60 minutes.
+                    </p>
+</div>
+</div>
+<!-- Action Area -->
+<div class="flex flex-col sm:flex-row items-center justify-between gap-6 border-t border-outline-variant/50 pt-8">
+<div class="flex items-center gap-2">
+<!-- Simple stepper indicating progress -->
+<div class="flex gap-1 items-center">
+<div class="w-2 h-2 rounded-full bg-outline-variant"></div>
+<div class="w-8 h-1 bg-primary rounded-full"></div>
+<div class="w-2 h-2 rounded-full bg-outline-variant"></div>
+<div class="w-2 h-2 rounded-full bg-outline-variant"></div>
+</div>
+<span class="font-label-caps text-label-caps text-on-surface-variant ml-2">STEP 1 OF 9</span>
+</div>
+<button class="w-full sm:w-auto bg-primary-container text-on-primary font-label-md text-label-md font-bold py-4 px-8 rounded flex items-center justify-center gap-2 hover:bg-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2">
+                    Get Started
+                    <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+</div>
+</main>
+</body></html>

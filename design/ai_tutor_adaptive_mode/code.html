@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+
+<html class="h-full" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Playing Socrates - Adaptive Mode</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@600;700&amp;family=Inter:wght@500;600&amp;family=Source+Serif+4:wght@400&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "secondary-fixed": "#cbe7f5",
+                    "on-error": "#ffffff",
+                    "on-primary-fixed-variant": "#07497d",
+                    "on-tertiary-fixed": "#0f1d25",
+                    "on-primary-fixed": "#001c37",
+                    "inverse-primary": "#a0c9ff",
+                    "on-secondary": "#ffffff",
+                    "primary-fixed-dim": "#a0c9ff",
+                    "secondary-container": "#cbe7f5",
+                    "primary-fixed": "#d2e4ff",
+                    "tertiary-fixed": "#d6e5ef",
+                    "surface-variant": "#e2e2e5",
+                    "on-primary": "#ffffff",
+                    "tertiary-container": "#3e4c55",
+                    "on-secondary-fixed": "#021f29",
+                    "secondary-fixed-dim": "#afcbd8",
+                    "surface-container-low": "#f3f3f6",
+                    "primary-container": "#0f4c81",
+                    "surface-container-highest": "#e2e2e5",
+                    "outline-variant": "#c2c7d1",
+                    "on-tertiary-fixed-variant": "#3b4951",
+                    "surface-container-high": "#e8e8ea",
+                    "surface-container-lowest": "#ffffff",
+                    "on-secondary-fixed-variant": "#304a55",
+                    "tertiary-fixed-dim": "#bac9d3",
+                    "on-surface-variant": "#42474f",
+                    "surface": "#f9f9fc",
+                    "inverse-on-surface": "#f0f0f3",
+                    "on-error-container": "#93000a",
+                    "on-surface": "#1a1c1e",
+                    "primary": "#00355f",
+                    "surface-container": "#eeeef0",
+                    "error": "#ba1a1a",
+                    "surface-tint": "#2d6197",
+                    "outline": "#727780",
+                    "surface-bright": "#f9f9fc",
+                    "tertiary": "#28353e",
+                    "on-tertiary-container": "#adbcc6",
+                    "on-secondary-container": "#4e6874",
+                    "on-tertiary": "#ffffff",
+                    "inverse-surface": "#2f3133",
+                    "background": "#f9f9fc",
+                    "on-primary-container": "#8ebdf9",
+                    "error-container": "#ffdad6",
+                    "secondary": "#48626e",
+                    "surface-dim": "#dadadc",
+                    "on-background": "#1a1c1e"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "gutter": "24px",
+                    "margin-desktop": "40px",
+                    "section-gap": "64px",
+                    "container-max": "1140px",
+                    "unit": "8px",
+                    "margin-mobile": "16px"
+            },
+            "fontFamily": {
+                    "body-md": [
+                            "\"Source Serif 4\""
+                    ],
+                    "label-caps": [
+                            "Inter"
+                    ],
+                    "body-sm": [
+                            "\"Source Serif 4\""
+                    ],
+                    "headline-lg": [
+                            "Hanken Grotesk"
+                    ],
+                    "label-md": [
+                            "Inter"
+                    ],
+                    "headline-lg-mobile": [
+                            "Hanken Grotesk"
+                    ],
+                    "display-lg": [
+                            "Hanken Grotesk"
+                    ]
+            },
+            "fontSize": {
+                    "body-md": [
+                            "18px",
+                            {
+                                    "lineHeight": "28px",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "label-caps": [
+                            "12px",
+                            {
+                                    "lineHeight": "16px",
+                                    "letterSpacing": "0.05em",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "body-sm": [
+                            "16px",
+                            {
+                                    "lineHeight": "24px",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "headline-lg": [
+                            "32px",
+                            {
+                                    "lineHeight": "40px",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "label-md": [
+                            "14px",
+                            {
+                                    "lineHeight": "20px",
+                                    "letterSpacing": "0.01em",
+                                    "fontWeight": "500"
+                            }
+                    ],
+                    "headline-lg-mobile": [
+                            "24px",
+                            {
+                                    "lineHeight": "32px",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "display-lg": [
+                            "48px",
+                            {
+                                    "lineHeight": "56px",
+                                    "letterSpacing": "-0.02em",
+                                    "fontWeight": "700"
+                            }
+                    ]
+            }
+          }
+        }
+      }
+    </script>
+</head>
+<body class="bg-surface text-on-surface h-full flex flex-col font-body-md">
+<!-- TopAppBar -->
+<header class="bg-surface dark:bg-surface-dim font-headline-lg text-headline-lg docked full-width top-0 border-b border-outline-variant dark:border-outline flat no shadows flex justify-between items-center w-full px-gutter h-16 sticky z-10">
+<div class="font-headline-lg text-headline-lg font-semibold text-primary dark:text-primary-fixed-dim">
+            Playing Socrates
+        </div>
+<div class="flex items-center gap-4">
+<span class="text-on-surface-variant font-label-md text-label-md">Participant ID: #8291</span>
+<div class="flex gap-2">
+<button class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors cursor-pointer transition-all duration-200 p-2 rounded-full hover:bg-surface-container">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+</button>
+<button class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors cursor-pointer transition-all duration-200 p-2 rounded-full hover:bg-surface-container">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+</button>
+</div>
+</div>
+</header>
+<div class="flex flex-1 overflow-hidden">
+<!-- Main Content Canvas -->
+<main class="flex-1 overflow-y-auto w-full max-w-[720px] mx-auto px-margin-mobile md:px-margin-desktop py-8 flex flex-col gap-8 pb-32 md:pb-8">
+<!-- Status Bar -->
+<div class="flex justify-between items-center bg-surface-container-low px-4 py-3 rounded-lg border border-outline-variant shadow-sm">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary" data-icon="psychology">psychology</span>
+<span class="font-label-md text-label-md text-on-surface">Mode: <strong>Adaptive</strong></span>
+</div>
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-primary animate-pulse"></div>
+<span class="font-label-md text-label-md text-on-surface-variant">AI is guiding</span>
+</div>
+</div>
+<!-- Socratic Feedback Block (AI Question) -->
+<div class="bg-[#E3F2FD] border-l-4 border-primary p-6 rounded-r-lg shadow-sm">
+<div class="flex items-start gap-4">
+<span class="material-symbols-outlined text-primary mt-1" data-icon="smart_toy">smart_toy</span>
+<div>
+<p class="font-body-md text-body-md text-on-surface mb-2">Let's explore the Seven Stages of Action. When a user is trying to figure out if the system has done what they wanted, which 'Gulf' are they experiencing, and why?</p>
+</div>
+</div>
+</div>
+<!-- Student Answer -->
+<div class="flex justify-end w-full">
+<div class="bg-surface-container-high border border-outline-variant p-6 rounded-lg rounded-tr-none max-w-[85%]">
+<p class="font-body-md text-body-md text-on-surface">They are experiencing the Gulf of Evaluation. It has to do with the feedback loop.</p>
+</div>
+</div>
+<!-- Socratic Feedback Block (AI Hint) -->
+<div class="bg-[#E3F2FD] border-l-4 border-primary p-6 rounded-r-lg shadow-sm flex flex-col gap-3 relative">
+<div class="absolute -top-3 right-4 bg-secondary-container border border-primary text-primary px-3 py-1 rounded-full font-label-caps text-label-caps flex items-center gap-1 shadow-sm">
+<span class="material-symbols-outlined text-[14px]" data-icon="analytics">analytics</span>
+                    Evaluation: Partial Understanding
+                </div>
+<div class="flex items-start gap-4 mt-2">
+<span class="material-symbols-outlined text-primary mt-1" data-icon="tips_and_updates">tips_and_updates</span>
+<div>
+<p class="font-body-md text-body-md text-on-surface">You're on the right track regarding the feedback loop! Think about what happens right after the user sees the system's response—how do they know if their goal was actually met?</p>
+</div>
+</div>
+</div>
+<!-- Input Area -->
+<div class="mt-auto pt-8 border-t border-outline-variant">
+<label class="sr-only" for="student-input">Your response</label>
+<div class="relative">
+<textarea class="w-full bg-surface-container-lowest border border-outline-variant rounded-lg p-4 font-body-md text-body-md text-on-surface focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-all resize-none shadow-sm" id="student-input" placeholder="Continue the discussion..." rows="3"></textarea>
+<div class="absolute bottom-4 right-4 flex gap-2">
+<button class="bg-primary text-on-primary px-4 py-2 rounded font-label-md text-label-md font-bold hover:bg-surface-tint transition-colors flex items-center gap-2 shadow-sm">
+                             Submit
+                             <span class="material-symbols-outlined text-[18px]" data-icon="send">send</span>
+</button>
+</div>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-2 text-center">Reflect carefully before answering. The AI adapts to your level of understanding.</p>
+</div>
+</main>
+</div>
+</body></html>

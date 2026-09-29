@@ -1,0 +1,122 @@
+[
+  {
+    "id": "B1",
+    "question": "Which cellular structure contains the pigments that capture light for photosynthesis?",
+    "options": [
+      "Nucleus",
+      "Chloroplast",
+      "Lysosome",
+      "Golgi apparatus"
+    ],
+    "correctIndex": 1,
+    "concept": "chloroplast-structure"
+  },
+  {
+    "id": "B2",
+    "question": "Which set of reactants is consumed during photosynthesis?",
+    "options": [
+      "Glucose and oxygen",
+      "Water and glucose",
+      "Carbon dioxide and water",
+      "Oxygen and carbon dioxide"
+    ],
+    "correctIndex": 2,
+    "concept": "overall-equation"
+  },
+  {
+    "id": "B3",
+    "question": "The light-dependent reactions are associated with which internal chloroplast structure?",
+    "options": [
+      "Stroma",
+      "Thylakoid membranes",
+      "Outer envelope",
+      "Chloroplast DNA"
+    ],
+    "correctIndex": 1,
+    "concept": "light-reactions"
+  },
+  {
+    "id": "B4",
+    "question": "Which photosynthetic pigment is found in greatest abundance in most green plants?",
+    "options": [
+      "Phycoerythrin",
+      "Beta-carotene",
+      "Chlorophyll a",
+      "Anthocyanin"
+    ],
+    "correctIndex": 2,
+    "concept": "light-absorption"
+  },
+  {
+    "id": "B5",
+    "question": "Which energy-carrier molecules are produced by the light-dependent reactions and then used in the Calvin cycle?",
+    "options": [
+      "Glucose and glycerol",
+      "ADP and NAD⁺",
+      "ATP and NADPH",
+      "RuBP and G3P"
+    ],
+    "correctIndex": 2,
+    "concept": "light-reactions"
+  },
+  {
+    "id": "B6",
+    "question": "In which region of the chloroplast do the light-independent (Calvin cycle) reactions occur?",
+    "options": [
+      "Thylakoid lumen",
+      "Stroma",
+      "Cell wall",
+      "Plasma membrane"
+    ],
+    "correctIndex": 1,
+    "concept": "calvin-cycle"
+  },
+  {
+    "id": "B7",
+    "question": "What is the carbon-dioxide acceptor molecule regenerated at the end of each turn of the Calvin cycle?",
+    "options": [
+      "Glucose",
+      "ATP",
+      "G3P (glyceraldehyde-3-phosphate)",
+      "RuBP (ribulose-1,5-bisphosphate)"
+    ],
+    "correctIndex": 3,
+    "concept": "calvin-cycle"
+  },
+  {
+    "id": "B8",
+    "question": "Which gas, produced during the light stage, is released into the atmosphere?",
+    "options": [
+      "Carbon dioxide",
+      "Nitrogen",
+      "Oxygen",
+      "Water vapour"
+    ],
+    "correctIndex": 2,
+    "concept": "light-reactions"
+  },
+  {
+    "id": "B9",
+    "question": "Chlorophyll appears green because it mainly reflects which wavelength range?",
+    "options": [
+      "Red light",
+      "Blue light",
+      "Green light",
+      "Ultraviolet light"
+    ],
+    "correctIndex": 2,
+    "concept": "light-absorption"
+  },
+  {
+    "id": "B10",
+    "question": "During photolysis in the light-dependent stage, water molecules are split to provide which of the following?",
+    "options": [
+      "CO₂ and ATP",
+      "Electrons, H⁺ ions, and O₂",
+      "NADPH and glucose",
+      "RuBP and G3P"
+    ],
+    "correctIndex": 1,
+    "concept": "photolysis"
+  }
+]

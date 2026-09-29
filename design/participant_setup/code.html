@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+
+<html class="h-full" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Participant Setup - Playing Socrates</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700&amp;family=Inter:wght@400;500;600&amp;family=Source+Serif+4:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-container-low": "#f3f3f6",
+                      "on-primary-container": "#8ebdf9",
+                      "primary": "#00355f",
+                      "secondary-container": "#cbe7f5",
+                      "inverse-primary": "#a0c9ff",
+                      "outline-variant": "#c2c7d1",
+                      "outline": "#727780",
+                      "on-secondary": "#ffffff",
+                      "on-tertiary-container": "#adbcc6",
+                      "on-background": "#1a1c1e",
+                      "inverse-on-surface": "#f0f0f3",
+                      "primary-fixed-dim": "#a0c9ff",
+                      "secondary-fixed-dim": "#afcbd8",
+                      "tertiary-container": "#3e4c55",
+                      "inverse-surface": "#2f3133",
+                      "primary-fixed": "#d2e4ff",
+                      "secondary": "#48626e",
+                      "tertiary-fixed-dim": "#bac9d3",
+                      "on-secondary-fixed": "#021f29",
+                      "surface-container": "#eeeef0",
+                      "on-primary-fixed": "#001c37",
+                      "surface-dim": "#dadadc",
+                      "on-secondary-fixed-variant": "#304a55",
+                      "primary-container": "#0f4c81",
+                      "on-tertiary-fixed-variant": "#3b4951",
+                      "tertiary-fixed": "#d6e5ef",
+                      "surface-tint": "#2d6197",
+                      "on-tertiary": "#ffffff",
+                      "on-error": "#ffffff",
+                      "surface-container-lowest": "#ffffff",
+                      "surface-container-high": "#e8e8ea",
+                      "error": "#ba1a1a",
+                      "on-error-container": "#93000a",
+                      "surface-container-highest": "#e2e2e5",
+                      "on-tertiary-fixed": "#0f1d25",
+                      "tertiary": "#28353e",
+                      "secondary-fixed": "#cbe7f5",
+                      "surface": "#f9f9fc",
+                      "error-container": "#ffdad6",
+                      "on-primary": "#ffffff",
+                      "on-secondary-container": "#4e6874",
+                      "on-primary-fixed-variant": "#07497d",
+                      "background": "#f9f9fc",
+                      "surface-variant": "#e2e2e5",
+                      "on-surface": "#1a1c1e",
+                      "surface-bright": "#f9f9fc",
+                      "on-surface-variant": "#42474f"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "gutter": "24px",
+                      "section-gap": "64px",
+                      "container-max": "1140px",
+                      "unit": "8px",
+                      "margin-mobile": "16px",
+                      "margin-desktop": "40px"
+              },
+              "fontFamily": {
+                      "display-lg": ["Hanken Grotesk"],
+                      "headline-lg-mobile": ["Hanken Grotesk"],
+                      "body-md": ["\"Source Serif 4\""],
+                      "headline-lg": ["Hanken Grotesk"],
+                      "body-sm": ["\"Source Serif 4\""],
+                      "label-md": ["Inter"],
+                      "label-caps": ["Inter"]
+              },
+              "fontSize": {
+                      "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                      "body-md": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                      "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                      "body-sm": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                      "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}]
+              }
+            }
+          }
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background h-full font-body-md overflow-x-hidden antialiased flex">
+<!-- SideNavBar -->
+<nav class="hidden md:flex h-screen w-64 fixed left-0 top-0 bg-surface-container-low border-r border-outline-variant flex-col py-8 z-10 shadow-none">
+<div class="px-gutter mb-8">
+<h1 class="font-display-lg text-primary text-display-lg-mobile md:text-display-lg">Playing Socrates</h1>
+</div>
+<div class="px-gutter mb-6">
+<p class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-wider mb-2">Onboarding</p>
+<p class="font-label-md text-label-md text-on-surface-variant">Step 4 of 9</p>
+</div>
+<ul class="flex flex-col space-y-2 px-4 w-full">
+<li>
+<div class="flex items-center px-4 py-3 rounded-lg text-on-surface-variant opacity-50 cursor-not-allowed">
+<span class="material-symbols-outlined mr-3 text-[20px]" data-icon="assignment">assignment</span>
+<span class="font-label-md text-label-md">Consent</span>
+</div>
+</li>
+<li>
+<div class="flex items-center px-4 py-3 rounded-lg text-on-surface-variant opacity-50 cursor-not-allowed">
+<span class="material-symbols-outlined mr-3 text-[20px]" data-icon="waving_hand">waving_hand</span>
+<span class="font-label-md text-label-md">Welcome</span>
+</div>
+</li>
+<li>
+<div class="flex items-center px-4 py-3 rounded-lg text-on-surface-variant opacity-50 cursor-not-allowed">
+<span class="material-symbols-outlined mr-3 text-[20px]" data-icon="quiz">quiz</span>
+<span class="font-label-md text-label-md">Pre-Test</span>
+</div>
+</li>
+<li>
+<div class="flex items-center px-4 py-3 rounded-lg text-primary font-bold border-l-4 border-primary bg-primary-container/10 pointer-events-none">
+<span class="material-symbols-outlined mr-3 text-[20px]" data-icon="smart_toy">smart_toy</span>
+<span class="font-label-md text-label-md">AI Tutorial</span>
+</div>
+</li>
+<li>
+<div class="flex items-center px-4 py-3 rounded-lg text-on-surface-variant opacity-50 cursor-not-allowed">
+<span class="material-symbols-outlined mr-3 text-[20px]" data-icon="school">school</span>
+<span class="font-label-md text-label-md">HCI Theory</span>
+</div>
+</li>
+<li>
+<div class="flex items-center px-4 py-3 rounded-lg text-on-surface-variant opacity-50 cursor-not-allowed">
+<span class="material-symbols-outlined mr-3 text-[20px]" data-icon="psychology">psychology</span>
+<span class="font-label-md text-label-md">Socratic Method</span>
+</div>
+</li>
+<li>
+<div class="flex items-center px-4 py-3 rounded-lg text-on-surface-variant opacity-50 cursor-not-allowed">
+<span class="material-symbols-outlined mr-3 text-[20px]" data-icon="edit_note">edit_note</span>
+<span class="font-label-md text-label-md">Practice</span>
+</div>
+</li>
+<li>
+<div class="flex items-center px-4 py-3 rounded-lg text-on-surface-variant opacity-50 cursor-not-allowed">
+<span class="material-symbols-outlined mr-3 text-[20px]" data-icon="fact_check">fact_check</span>
+<span class="font-label-md text-label-md">Post-Test</span>
+</div>
+</li>
+<li>
+<div class="flex items-center px-4 py-3 rounded-lg text-on-surface-variant opacity-50 cursor-not-allowed">
+<span class="material-symbols-outlined mr-3 text-[20px]" data-icon="rate_review">rate_review</span>
+<span class="font-label-md text-label-md">Feedback</span>
+</div>
+</li>
+</ul>
+</nav>
+<!-- Main Content Area -->
+<main class="flex-1 md:ml-64 relative min-h-screen pt-24 md:pt-32 pb-24 px-margin-mobile md:px-margin-desktop bg-surface flex flex-col items-center">
+<!-- TopAppBar (Mobile Only - Simplified for transactional view) -->
+<header class="md:hidden fixed top-0 left-0 w-full bg-surface border-b border-outline-variant z-20 px-gutter py-4 flex justify-between items-center">
+<h1 class="font-display-lg text-display-lg-mobile text-primary">Playing Socrates</h1>
+<span class="font-label-md text-label-md text-on-surface-variant">Step 4/9</span>
+</header>
+<!-- Content Container -->
+<div class="w-full max-w-[720px] mx-auto">
+<div class="mb-12">
+<h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface mb-4">Participant Setup</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">This information helps us tailor the AI interactions to your background.</p>
+</div>
+<!-- Form Card -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-6 md:p-8 shadow-sm">
+<form class="space-y-6">
+<!-- Field 1: Name/Alias -->
+<div>
+<label class="block font-label-md text-label-md text-on-surface mb-2" for="participant-name">Name (or Alias)</label>
+<input class="w-full bg-surface-container-lowest border border-outline-variant rounded-lg px-4 py-3 font-body-md text-body-md text-on-surface focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-shadow" id="participant-name" name="participant-name" placeholder="e.g. Student 01" type="text"/>
+<p class="mt-2 font-body-sm text-body-sm text-on-surface-variant">You may use an alias to remain anonymous in study publications.</p>
+</div>
+<!-- Field 2: Level of Study -->
+<div>
+<label class="block font-label-md text-label-md text-on-surface mb-2" for="study-level">Current Level of Study</label>
+<div class="relative">
+<select class="w-full bg-surface-container-lowest border border-outline-variant rounded-lg px-4 py-3 font-body-md text-body-md text-on-surface appearance-none focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-shadow" id="study-level" name="study-level">
+<option disabled="" selected="" value="">Select your level</option>
+<option value="undergrad1">Undergraduate (Year 1-2)</option>
+<option value="undergrad3">Undergraduate (Year 3-4)</option>
+<option value="masters">Master's Student</option>
+<option value="phd">PhD Candidate</option>
+<option value="other">Other / Professional</option>
+</select>
+<div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="expand_more">expand_more</span>
+</div>
+</div>
+</div>
+<!-- Field 3: Familiarity -->
+<div>
+<label class="block font-label-md text-label-md text-on-surface mb-2" for="familiarity">Familiarity with Socratic Method</label>
+<div class="relative">
+<select class="w-full bg-surface-container-lowest border border-outline-variant rounded-lg px-4 py-3 font-body-md text-body-md text-on-surface appearance-none focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-shadow" id="familiarity" name="familiarity">
+<option disabled="" selected="" value="">Select familiarity level</option>
+<option value="none">None - I have never heard of it.</option>
+<option value="basic">Basic - I know what it is conceptually.</option>
+<option value="moderate">Moderate - I have participated in it before.</option>
+<option value="high">High - I use it regularly in my studies/teaching.</option>
+</select>
+<div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="expand_more">expand_more</span>
+</div>
+</div>
+</div>
+</form>
+</div>
+<!-- Actions -->
+<div class="mt-8 flex justify-end">
+<button class="bg-primary text-on-primary font-label-md text-label-md font-bold py-3 px-6 rounded hover:bg-primary/90 transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary" type="button">
+                    Save and Continue
+                </button>
+</div>
+</div>
+</main>
+</body></html>

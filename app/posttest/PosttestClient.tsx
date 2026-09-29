@@ -1,0 +1,174 @@
+/**
+ * app/posttest/PosttestClient.tsx
+ * Post-Test client — wraps the shared MCQ logic with form="B".
+ * We duplicate this thin wrapper rather than re-exporting PretestClient
+ * to keep the import graph clean (avoids circular deps on SafeQuestion type).
+ */
+"use client";
+
+import { useState, useRef } from "react";
+import { useRouter } from "next/navigation";
+import PageShell from "@/components/layout/PageShell";
+import MCQOption from "@/components/ui/MCQOption";
+import Button from "@/components/ui/Button";
+import type { SafeQuestion } from "@/app/pretest/page";
+
+interface PosttestClientProps {
+  questions: SafeQuestion[];
+  form: "B";
+}
+
+type Answers = Record<string, number>;
+
+export default function PosttestClient({ questions, form }: PosttestClientProps) {
+  const router = useRouter();
+  const startTimeRef = useRef<number>(Date.now());
+
+  const [answers, setAnswers]           = useState<Answers>({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [error, setError]               = useState<string | null>(null);
+  const [submitted, setSubmitted]       = useState(false);
+
+  const totalItems    = questions.length;
+  const answeredCount = Object.keys(answers).length;
+  const allAnswered   = answeredCount === totalItems;
+  const progressPct   = Math.round((answeredCount / totalItems) * 100);
+
+  function handleSelect(itemId: string, index: number) {
+    if (submitted) return;
+    setAnswers((prev) => ({ ...prev, [itemId]: index }));
+  }
+
+  async function handleSubmit() {
+    if (!allAnswered || isSubmitting || submitted) return;
+    setIsSubmitting(true);
+    setError(null);
+
+    const timeTakenSeconds = Math.round((Date.now() - startTimeRef.current) / 1000);
+    const payload = {
+      form,
+      answers: questions.map((q) => ({
+        itemId:      q.id,
+        chosenIndex: answers[q.id],
+      })),
+      timeTakenSeconds,
+    };
+
+    try {
+      const res = await fetch("/api/test/submit", {
+        method:  "POST",
+        headers: { "Content-Type": "application/json" },
+        body:    JSON.stringify(payload),
+      });
+
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}));
+        throw new Error(data.error ?? `Server error ${res.status}`);
+      }
+
+      setSubmitted(true);
+      router.push("/trust");
+    } catch (err: unknown) {
+      const msg = err instanceof Error ? err.message : "Unexpected error";
+      setError(msg);
+      setIsSubmitting(false);
+    }
+  }
+
+  return (
+    <PageShell currentStage="posttest">
+      <div className="max-w-2xl mx-auto px-[var(--spacing-gutter)] py-10">
+        {/* ── Header ────────────────────────────────────────────────────────── */}
+        <div className="mb-8">
+          <p className="font-[var(--font-ui)] text-[length:var(--text-label-md)] text-[var(--color-primary)] uppercase tracking-[0.08em] mb-2">
+            Step 5 of 8
+          </p>
+          <h1 className="font-[var(--font-display)] text-[length:var(--text-headline-lg)] font-bold text-[var(--color-on-surface)] mb-3">
+            Post-Test Assessment
+          </h1>
+          <p className="font-[var(--font-body)] text-[length:var(--text-body-md)] text-[var(--color-on-surface-variant)]">
+            Answer all {totalItems} questions to measure what you learned in the session.
+          </p>
+        </div>
+
+        {/* ── Progress ──────────────────────────────────────────────────────── */}
+        <div className="mb-8" role="status" aria-label={`${answeredCount} of ${totalItems} answered`}>
+          <div className="flex justify-between items-center mb-2">
+            <span className="font-[var(--font-ui)] text-[length:var(--text-label-md)] text-[var(--color-on-surface-variant)]">Progress</span>
+            <span className="font-[var(--font-ui)] text-[length:var(--text-label-md)] text-[var(--color-primary)] font-semibold">
+              {answeredCount}/{totalItems}
+            </span>
+          </div>
+          <div className="h-2 bg-[var(--color-surface-container)] rounded-full overflow-hidden">
+            <div
+              className="h-full bg-[var(--color-primary)] rounded-full transition-all duration-300"
+              style={{ width: `${progressPct}%` }}
+              aria-hidden="true"
+            />
+          </div>
+        </div>
+
+        {/* ── Questions ────────────────────────────────────────────────────── */}
+        <ol className="space-y-10 list-none p-0 m-0">
+          {questions.map((q, qIdx) => (
+            <li key={q.id}>
+              <fieldset>
+                <legend className="font-[var(--font-body)] text-[length:var(--text-body-lg)] font-semibold text-[var(--color-on-surface)] mb-4 leading-snug">
+                  <span className="text-[var(--color-primary)] mr-2">{qIdx + 1}.</span>
+                  {q.question}
+                </legend>
+                <div className="space-y-3" role="radiogroup">
+                  {q.options.map((opt, optIdx) => (
+                    <MCQOption
+                      key={`${q.id}-${optIdx}`}
+                      id={`${q.id}-opt-${optIdx}`}
+                      name={q.id}
+                      value={optIdx}
+                      label={opt}
+                      checked={answers[q.id] === optIdx}
+                      onChange={() => handleSelect(q.id, optIdx)}
+                      disabled={submitted}
+                    />
+                  ))}
+                </div>
+              </fieldset>
+            </li>
+          ))}
+        </ol>
+
+        {/* ── Error ────────────────────────────────────────────────────────── */}
+        {error && (
+          <div
+            role="alert"
+            className="mt-8 p-4 rounded-xl bg-red-500/10 border border-red-500/30 text-red-400 font-[var(--font-body)] text-[length:var(--text-body-sm)]"
+          >
+            <span className="material-symbols-outlined align-middle mr-2 text-[18px]">error</span>
+            {error}
+          </div>
+        )}
+
+        {/* ── Submit ───────────────────────────────────────────────────────── */}
+        <div className="mt-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+          {!allAnswered && (
+            <p
+              aria-live="polite"
+              className="font-[var(--font-body)] text-[length:var(--text-body-sm)] text-[var(--color-on-surface-variant)]"
+            >
+              {totalItems - answeredCount} question{totalItems - answeredCount !== 1 ? "s" : ""} remaining
+            </p>
+          )}
+          <Button
+            id="posttest-submit-btn"
+            onClick={handleSubmit}
+            disabled={!allAnswered || submitted}
+            isLoading={isSubmitting}
+            size="lg"
+            className="ml-auto"
+          >
+            {isSubmitting ? "Submitting…" : "Submit Answers"}
+          </Button>
+        </div>
+      </div>
+    </PageShell>
+  );
+}

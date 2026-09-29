@@ -1,0 +1,228 @@
+/* ─── Tailwind v4 ────────────────────────────────────────────────────────── */
+@import "tailwindcss";
+
+/*
+ * Playing Socrates — Global Design System
+ * Tailwind v4: all tokens declared via @theme (no tailwind.config.ts needed).
+ * Extracted from the Stitch design export (17 design files, all identical palette).
+ * Design system name: "Academic Minimalism" (see /design/socratic_inquiry_system/DESIGN.md)
+ */
+
+/* ─── Design Tokens ──────────────────────────────────────────────────────── */
+@theme {
+  /* ── Colors (Material3 palette — consistent across all 17 design files) ── */
+
+  /* Primary — Oxford Blue */
+  --color-primary:                  #00355f;
+  --color-on-primary:               #ffffff;
+  --color-primary-container:        #0f4c81;
+  --color-on-primary-container:     #8ebdf9;
+  --color-primary-fixed:            #d2e4ff;
+  --color-primary-fixed-dim:        #a0c9ff;
+  --color-on-primary-fixed:         #001c37;
+  --color-on-primary-fixed-variant: #07497d;
+  --color-inverse-primary:          #a0c9ff;
+
+  /* Secondary — Slate Blue */
+  --color-secondary:                  #48626e;
+  --color-on-secondary:               #ffffff;
+  --color-secondary-container:        #cbe7f5;
+  --color-on-secondary-container:     #4e6874;
+  --color-secondary-fixed:            #cbe7f5;
+  --color-secondary-fixed-dim:        #afcbd8;
+  --color-on-secondary-fixed:         #021f29;
+  --color-on-secondary-fixed-variant: #304a55;
+
+  /* Tertiary — Slate */
+  --color-tertiary:                  #28353e;
+  --color-on-tertiary:               #ffffff;
+  --color-tertiary-container:        #3e4c55;
+  --color-on-tertiary-container:     #adbcc6;
+  --color-tertiary-fixed:            #d6e5ef;
+  --color-tertiary-fixed-dim:        #bac9d3;
+  --color-on-tertiary-fixed:         #0f1d25;
+  --color-on-tertiary-fixed-variant: #3b4951;
+
+  /* Error */
+  --color-error:              #ba1a1a;
+  --color-on-error:           #ffffff;
+  --color-error-container:    #ffdad6;
+  --color-on-error-container: #93000a;
+
+  /* Neutral surfaces (5-tier tonal system) */
+  --color-background:                 #f9f9fc;
+  --color-on-background:              #1a1c1e;
+  --color-surface:                    #f9f9fc;
+  --color-on-surface:                 #1a1c1e;
+  --color-surface-variant:            #e2e2e5;
+  --color-on-surface-variant:         #42474f;
+  --color-surface-bright:             #f9f9fc;
+  --color-surface-dim:                #dadadc;
+  --color-surface-container-lowest:   #ffffff;
+  --color-surface-container-low:      #f3f3f6;
+  --color-surface-container:          #eeeef0;
+  --color-surface-container-high:     #e8e8ea;
+  --color-surface-container-highest:  #e2e2e5;
+  --color-inverse-surface:            #2f3133;
+  --color-inverse-on-surface:         #f0f0f3;
+  --color-surface-tint:               #2d6197;
+
+  /* Outline */
+  --color-outline:         #727780;
+  --color-outline-variant: #c2c7d1;
+
+  /* Semantic shorthand (used by components) */
+  --color-socratic-bg: #E3F2FD; /* Socratic/Adaptive AI bubble background */
+
+  /* ── Typography ─────────────────────────────────────────────────────────── */
+  /* Font families */
+  --font-display:  "Hanken Grotesk", sans-serif;  /* h1, hero text */
+  --font-headline: "Hanken Grotesk", sans-serif;  /* h2, h3, section heads */
+  --font-body:     "Source Serif 4", serif;       /* reading content, AI/student text */
+  --font-ui:       "Inter", sans-serif;           /* labels, buttons, metadata */
+
+  /* Type scale */
+  --text-display-lg:          48px;
+  --text-display-lg--line-height:    56px;
+  --text-display-lg--letter-spacing: -0.02em;
+  --text-display-lg--font-weight:    700;
+
+  --text-headline-lg:          32px;
+  --text-headline-lg--line-height:    40px;
+  --text-headline-lg--font-weight:    600;
+
+  --text-headline-lg-mobile:          24px;
+  --text-headline-lg-mobile--line-height:    32px;
+  --text-headline-lg-mobile--font-weight:    600;
+
+  --text-body-md:          18px;
+  --text-body-md--line-height:    28px;
+  --text-body-md--font-weight:    400;
+
+  --text-body-sm:          16px;
+  --text-body-sm--line-height:    24px;
+  --text-body-sm--font-weight:    400;
+
+  --text-label-md:          14px;
+  --text-label-md--line-height:    20px;
+  --text-label-md--letter-spacing: 0.01em;
+  --text-label-md--font-weight:    500;
+
+  --text-label-caps:          12px;
+  --text-label-caps--line-height:    16px;
+  --text-label-caps--letter-spacing: 0.05em;
+  --text-label-caps--font-weight:    600;
+
+  /* ── Spacing ─────────────────────────────────────────────────────────────── */
+  --spacing-unit:            8px;
+  --spacing-gutter:          24px;
+  --spacing-margin-mobile:   16px;
+  --spacing-margin-desktop:  40px;
+  --spacing-section-gap:     64px;
+  --spacing-container-max:   1140px;
+  --spacing-content-max:     720px;   /* reading column cap — never exceed */
+
+  /* ── Border radius ───────────────────────────────────────────────────────── */
+  /* Design system: "Soft" — professional without being playful */
+  --radius-sm:      2px;   /* was DEFAULT in designs */
+  --radius:         4px;   /* standard elements: buttons, inputs, chips */
+  --radius-md:      6px;
+  --radius-lg:      8px;   /* large containers, cards, modals */
+  --radius-xl:      12px;  /* progress bars, steppers */
+  --radius-full:    9999px;
+}
+
+/* ─── Base styles ────────────────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background-color: var(--color-background);
+  color: var(--color-on-surface);
+  font-family: var(--font-ui);
+  font-size: var(--text-body-sm);
+  line-height: var(--text-body-sm--line-height);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ─── Material Symbols icon defaults ────────────────────────────────────── */
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+  user-select: none;
+}
+/* Filled variant helper (apply .icon-fill to parent or span) */
+.icon-fill .material-symbols-outlined,
+.material-symbols-outlined[data-fill="1"] {
+  font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+
+/* ─── Custom scrollbar (consent/scrollable cards) ───────────────────────── */
+.custom-scrollbar::-webkit-scrollbar       { width: 8px; }
+.custom-scrollbar::-webkit-scrollbar-track { background: var(--color-surface-container-low); border-radius: 4px; }
+.custom-scrollbar::-webkit-scrollbar-thumb { background-color: var(--color-outline-variant); border-radius: 4px; }
+
+/* ─── Socratic / Adaptive AI bubble ─────────────────────────────────────── */
+/* Matches design: bg-[#E3F2FD] border-l-4 border-primary */
+.ai-block-socratic {
+  background-color: var(--color-socratic-bg);
+  border-left: 4px solid var(--color-primary);
+  border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
+  padding: 1.25rem 1.5rem;
+}
+
+/* ─── Sidebar nav active state ───────────────────────────────────────────── */
+/* Matches design: border-l-4 border-primary bg-primary-container/10 */
+.nav-item-active {
+  border-left: 4px solid var(--color-primary);
+  background-color: color-mix(in srgb, var(--color-primary-container) 10%, transparent);
+  color: var(--color-primary);
+  font-weight: 700;
+}
+
+/* ─── Progress bar fill ──────────────────────────────────────────────────── */
+.progress-fill {
+  height: 4px;
+  background-color: var(--color-primary);
+  border-radius: var(--radius-xl);
+  transition: width 300ms ease;
+}
+
+/* ─── Trust / Likert radio circle ───────────────────────────────────────── */
+/* Matches design: w-10 h-10 rounded-full + peer-checked states */
+.trust-radio-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 9999px;
+  border: 2px solid var(--color-outline-variant);
+  font-family: var(--font-ui);
+  font-size: var(--text-label-md);
+  font-weight: 500;
+  color: var(--color-on-surface-variant);
+  cursor: pointer;
+  transition: border-color 150ms, background-color 150ms, color 150ms;
+}
+.trust-radio-btn:hover {
+  border-color: var(--color-primary);
+}
+.trust-radio-btn[data-checked="true"] {
+  border-color: var(--color-primary);
+  background-color: var(--color-primary);
+  color: var(--color-on-primary);
+}
+
+/* ─── Focus ring (accessibility) ─────────────────────────────────────────── */
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}

@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Playing Socrates - Socratic Tutoring</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "secondary-fixed": "#cbe7f5",
+                      "on-error": "#ffffff",
+                      "on-primary-fixed-variant": "#07497d",
+                      "on-tertiary-fixed": "#0f1d25",
+                      "on-primary-fixed": "#001c37",
+                      "inverse-primary": "#a0c9ff",
+                      "on-secondary": "#ffffff",
+                      "primary-fixed-dim": "#a0c9ff",
+                      "secondary-container": "#cbe7f5",
+                      "primary-fixed": "#d2e4ff",
+                      "tertiary-fixed": "#d6e5ef",
+                      "surface-variant": "#e2e2e5",
+                      "on-primary": "#ffffff",
+                      "tertiary-container": "#3e4c55",
+                      "on-secondary-fixed": "#021f29",
+                      "secondary-fixed-dim": "#afcbd8",
+                      "surface-container-low": "#f3f3f6",
+                      "primary-container": "#0f4c81",
+                      "surface-container-highest": "#e2e2e5",
+                      "outline-variant": "#c2c7d1",
+                      "on-tertiary-fixed-variant": "#3b4951",
+                      "surface-container-high": "#e8e8ea",
+                      "surface-container-lowest": "#ffffff",
+                      "on-secondary-fixed-variant": "#304a55",
+                      "tertiary-fixed-dim": "#bac9d3",
+                      "on-surface-variant": "#42474f",
+                      "surface": "#f9f9fc",
+                      "inverse-on-surface": "#f0f0f3",
+                      "on-error-container": "#93000a",
+                      "on-surface": "#1a1c1e",
+                      "primary": "#00355f",
+                      "surface-container": "#eeeef0",
+                      "error": "#ba1a1a",
+                      "surface-tint": "#2d6197",
+                      "outline": "#727780",
+                      "surface-bright": "#f9f9fc",
+                      "tertiary": "#28353e",
+                      "on-tertiary-container": "#adbcc6",
+                      "on-secondary-container": "#4e6874",
+                      "on-tertiary": "#ffffff",
+                      "inverse-surface": "#2f3133",
+                      "background": "#f9f9fc",
+                      "on-primary-container": "#8ebdf9",
+                      "error-container": "#ffdad6",
+                      "secondary": "#48626e",
+                      "surface-dim": "#dadadc",
+                      "on-background": "#1a1c1e"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "gutter": "24px",
+                      "margin-desktop": "40px",
+                      "section-gap": "64px",
+                      "container-max": "1140px",
+                      "unit": "8px",
+                      "margin-mobile": "16px"
+              },
+              "fontFamily": {
+                      "body-md": [
+                              "\"Source Serif 4\""
+                      ],
+                      "label-caps": [
+                              "Inter"
+                      ],
+                      "body-sm": [
+                              "\"Source Serif 4\""
+                      ],
+                      "headline-lg": [
+                              "Hanken Grotesk"
+                      ],
+                      "label-md": [
+                              "Inter"
+                      ],
+                      "headline-lg-mobile": [
+                              "Hanken Grotesk"
+                      ],
+                      "display-lg": [
+                              "Hanken Grotesk"
+                      ]
+              },
+              "fontSize": {
+                      "body-md": [
+                              "18px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "label-caps": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-sm": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-lg": [
+                              "32px",
+                              {
+                                      "lineHeight": "40px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "label-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "letterSpacing": "0.01em",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "headline-lg-mobile": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "display-lg": [
+                              "48px",
+                              {
+                                      "lineHeight": "56px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&amp;family=Inter:wght@400;500;600&amp;family=Hanken+Grotesk:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+</head>
+<body class="bg-background text-on-background antialiased flex flex-col min-h-screen">
+<!-- TopAppBar -->
+<header class="bg-surface dark:bg-surface-dim font-headline-lg text-headline-lg docked full-width top-0 border-b border-outline-variant dark:border-outline flex justify-between items-center w-full px-gutter h-16 sticky z-40">
+<div class="flex items-center gap-4">
+<span class="font-headline-lg text-headline-lg font-semibold text-primary dark:text-primary-fixed-dim hidden md:block">Playing Socrates</span>
+<span class="font-headline-lg-mobile text-headline-lg-mobile font-semibold text-primary dark:text-primary-fixed-dim md:hidden">Playing Socrates</span>
+<span class="ml-4 px-3 py-1 bg-tertiary-container/10 text-tertiary rounded-full font-label-caps text-label-caps flex items-center gap-1 border border-tertiary-container/20">
+<span class="material-symbols-outlined text-[14px]">psychology</span> Socratic Mode
+            </span>
+</div>
+<div class="flex items-center gap-6">
+<span class="text-on-surface-variant text-label-md font-label-md hidden md:block">Participant ID: #8291</span>
+<div class="flex items-center gap-4 text-on-surface-variant">
+<span class="material-symbols-outlined cursor-pointer hover:text-primary transition-colors" data-icon="settings">settings</span>
+<span class="material-symbols-outlined cursor-pointer hover:text-primary transition-colors" data-icon="help">help</span>
+</div>
+</div>
+</header>
+<div class="flex flex-1 overflow-hidden">
+<!-- SideNavBar (Desktop) -->
+<nav class="hidden md:flex flex-col h-full w-64 border-r border-outline-variant bg-surface-container-low pt-8 sticky top-16">
+<div class="px-6 mb-8">
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-primary mb-1">Learning Progress</h2>
+<p class="font-label-md text-label-md text-on-surface-variant">Module 2: Epistemology</p>
+</div>
+<ul class="flex flex-col gap-1 flex-1 px-2">
+<li>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-primary font-bold border-l-4 border-primary bg-secondary-container/30 transition-colors" href="#">
+<span class="material-symbols-outlined">menu_book</span>
+<span class="font-label-md text-label-md">Curriculum</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-secondary-fixed-variant hover:bg-surface-container-high transition-colors" href="#">
+<span class="material-symbols-outlined">dictionary</span>
+<span class="font-label-md text-label-md">Glossary</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-secondary-fixed-variant hover:bg-surface-container-high transition-colors" href="#">
+<span class="material-symbols-outlined">edit_note</span>
+<span class="font-label-md text-label-md">Notebook</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-secondary-fixed-variant hover:bg-surface-container-high transition-colors" href="#">
+<span class="material-symbols-outlined">auto_stories</span>
+<span class="font-label-md text-label-md">References</span>
+</a>
+</li>
+</ul>
+<div class="p-6 mt-auto">
+<button class="w-full py-2 px-4 bg-primary-container text-on-primary rounded font-label-md text-label-md font-semibold hover:bg-primary transition-colors">
+                    Request Review
+                </button>
+</div>
+</nav>
+<!-- Main Content Area -->
+<main class="flex-1 flex flex-col items-center overflow-y-auto w-full px-margin-mobile md:px-margin-desktop py-8 pb-32 md:pb-8">
+<div class="w-full max-w-[720px] flex flex-col gap-6">
+<!-- Chat Container -->
+<div class="flex flex-col gap-6 w-full">
+<!-- Student Message 1 -->
+<div class="flex flex-col items-end gap-2 w-full">
+<div class="flex items-center gap-2 mb-1">
+<span class="font-label-md text-label-md text-on-surface-variant">Student</span>
+<div class="w-6 h-6 rounded-full bg-surface-variant flex items-center justify-center">
+<span class="material-symbols-outlined text-[16px]">person</span>
+</div>
+</div>
+<div class="bg-white border border-outline-variant rounded-2xl rounded-tr-sm p-4 shadow-sm max-w-[85%]">
+<p class="font-body-md text-body-md text-on-surface">How does Fitts's Law apply to mobile button placement?</p>
+</div>
+</div>
+<!-- AI Message 1 (Socratic) -->
+<div class="flex flex-col items-start gap-2 w-full">
+<div class="flex items-center gap-2 mb-1">
+<div class="w-6 h-6 rounded-full bg-primary-container text-on-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[16px]">psychology</span>
+</div>
+<span class="font-label-md text-label-md text-primary font-semibold">Socrates AI</span>
+</div>
+<!-- Socratic Feedback Block -->
+<div class="bg-[#E3F2FD] border-l-4 border-primary rounded-r-lg p-5 max-w-[90%] shadow-sm">
+<p class="font-body-md text-body-md text-on-surface mb-3">That's a great question.</p>
+<p class="font-body-md text-body-md text-on-surface font-semibold text-primary">Before we dive in, if a user is holding a phone with one hand, where is their thumb naturally most likely to rest?</p>
+</div>
+</div>
+<!-- Student Message 2 -->
+<div class="flex flex-col items-end gap-2 w-full mt-2">
+<div class="bg-white border border-outline-variant rounded-2xl rounded-tr-sm p-4 shadow-sm max-w-[85%]">
+<p class="font-body-md text-body-md text-on-surface">Usually at the bottom or the center-right.</p>
+</div>
+</div>
+<!-- AI Message 2 (Socratic) -->
+<div class="flex flex-col items-start gap-2 w-full mt-2">
+<div class="flex items-center gap-2 mb-1">
+<div class="w-6 h-6 rounded-full bg-primary-container text-on-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[16px]">psychology</span>
+</div>
+<span class="font-label-md text-label-md text-primary font-semibold">Socrates AI</span>
+</div>
+<div class="bg-[#E3F2FD] border-l-4 border-primary rounded-r-lg p-5 max-w-[90%] shadow-sm">
+<p class="font-body-md text-body-md text-on-surface mb-3">Exactly.</p>
+<p class="font-body-md text-body-md text-on-surface font-semibold text-primary">So, based on Fitts's Law (distance and size), where would you place the primary action button to minimize effort?</p>
+</div>
+</div>
+</div>
+<!-- Input Area (Sticky to bottom of main area on desktop, fixed on mobile above nav) -->
+<div class="mt-8 bg-surface border border-outline-variant p-4 rounded-xl shadow-sm sticky bottom-0 md:relative">
+<div class="flex flex-col gap-2">
+<label class="sr-only" for="chat-input">Type your response...</label>
+<div class="relative">
+<textarea class="w-full bg-white border border-outline-variant rounded-lg p-3 font-body-sm text-body-sm text-on-surface focus:outline-none focus:border-primary focus:border-2 resize-none" id="chat-input" placeholder="Type your response..." rows="3"></textarea>
+<div class="absolute bottom-3 right-3 flex gap-2">
+<button class="p-2 text-on-surface-variant hover:text-primary transition-colors bg-surface-container-low rounded-full hover:bg-surface-container">
+<span class="material-symbols-outlined">attach_file</span>
+</button>
+<button class="p-2 bg-primary-container text-on-primary rounded-full hover:bg-primary transition-colors flex items-center justify-center">
+<span class="material-symbols-outlined">send</span>
+</button>
+</div>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant text-[12px] text-center mt-1">Socrates AI may occasionally guide you incorrectly to test your reasoning.</p>
+</div>
+</div>
+</div>
+</main>
+</div>
+<!-- BottomNavBar (Mobile) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center bg-surface border-t border-outline-variant rounded-t-xl px-4 pb-safe shadow-sm h-16">
+<a class="flex flex-col items-center justify-center text-primary font-bold py-2 active:scale-90 transition-transform duration-150 w-1/4" href="#">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 1;">chat</span>
+<span class="font-label-md text-label-md text-[10px]">Chat</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant py-2 hover:text-primary active:scale-90 transition-transform duration-150 w-1/4" href="#">
+<span class="material-symbols-outlined mb-1">insights</span>
+<span class="font-label-md text-label-md text-[10px]">Progress</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant py-2 hover:text-primary active:scale-90 transition-transform duration-150 w-1/4" href="#">
+<span class="material-symbols-outlined mb-1">library_books</span>
+<span class="font-label-md text-label-md text-[10px]">Resources</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant py-2 hover:text-primary active:scale-90 transition-transform duration-150 w-1/4" href="#">
+<span class="material-symbols-outlined mb-1">account_circle</span>
+<span class="font-label-md text-label-md text-[10px]">Profile</span>
+</a>
+</nav>
+</body></html>

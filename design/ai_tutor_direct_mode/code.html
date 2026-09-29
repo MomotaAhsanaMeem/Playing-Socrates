@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Playing Socrates - Direct Tutoring</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700&amp;family=Inter:wght@400;500;600&amp;family=Source+Serif+4:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "secondary-fixed": "#cbe7f5",
+                      "on-error": "#ffffff",
+                      "on-primary-fixed-variant": "#07497d",
+                      "on-tertiary-fixed": "#0f1d25",
+                      "on-primary-fixed": "#001c37",
+                      "inverse-primary": "#a0c9ff",
+                      "on-secondary": "#ffffff",
+                      "primary-fixed-dim": "#a0c9ff",
+                      "secondary-container": "#cbe7f5",
+                      "primary-fixed": "#d2e4ff",
+                      "tertiary-fixed": "#d6e5ef",
+                      "surface-variant": "#e2e2e5",
+                      "on-primary": "#ffffff",
+                      "tertiary-container": "#3e4c55",
+                      "on-secondary-fixed": "#021f29",
+                      "secondary-fixed-dim": "#afcbd8",
+                      "surface-container-low": "#f3f3f6",
+                      "primary-container": "#0f4c81",
+                      "surface-container-highest": "#e2e2e5",
+                      "outline-variant": "#c2c7d1",
+                      "on-tertiary-fixed-variant": "#3b4951",
+                      "surface-container-high": "#e8e8ea",
+                      "surface-container-lowest": "#ffffff",
+                      "on-secondary-fixed-variant": "#304a55",
+                      "tertiary-fixed-dim": "#bac9d3",
+                      "on-surface-variant": "#42474f",
+                      "surface": "#f9f9fc",
+                      "inverse-on-surface": "#f0f0f3",
+                      "on-error-container": "#93000a",
+                      "on-surface": "#1a1c1e",
+                      "primary": "#00355f",
+                      "surface-container": "#eeeef0",
+                      "error": "#ba1a1a",
+                      "surface-tint": "#2d6197",
+                      "outline": "#727780",
+                      "surface-bright": "#f9f9fc",
+                      "tertiary": "#28353e",
+                      "on-tertiary-container": "#adbcc6",
+                      "on-secondary-container": "#4e6874",
+                      "on-tertiary": "#ffffff",
+                      "inverse-surface": "#2f3133",
+                      "background": "#f9f9fc",
+                      "on-primary-container": "#8ebdf9",
+                      "error-container": "#ffdad6",
+                      "secondary": "#48626e",
+                      "surface-dim": "#dadadc",
+                      "on-background": "#1a1c1e"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "gutter": "24px",
+                      "margin-desktop": "40px",
+                      "section-gap": "64px",
+                      "container-max": "1140px",
+                      "unit": "8px",
+                      "margin-mobile": "16px"
+              },
+              "fontFamily": {
+                      "body-md": [
+                              "\"Source Serif 4\""
+                      ],
+                      "label-caps": [
+                              "Inter"
+                      ],
+                      "body-sm": [
+                              "\"Source Serif 4\""
+                      ],
+                      "headline-lg": [
+                              "Hanken Grotesk"
+                      ],
+                      "label-md": [
+                              "Inter"
+                      ],
+                      "headline-lg-mobile": [
+                              "Hanken Grotesk"
+                      ],
+                      "display-lg": [
+                              "Hanken Grotesk"
+                      ]
+              },
+              "fontSize": {
+                      "body-md": [
+                              "18px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "label-caps": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-sm": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-lg": [
+                              "32px",
+                              {
+                                      "lineHeight": "40px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "label-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "letterSpacing": "0.01em",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "headline-lg-mobile": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "display-lg": [
+                              "48px",
+                              {
+                                      "lineHeight": "56px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ]
+              }
+            },
+          },
+        }
+      </script>
+<style>
+        .material-symbols-outlined {
+          font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined[data-weight="fill"] {
+            font-variation-settings: 'FILL' 1;
+        }
+      </style>
+</head>
+<body class="bg-background text-on-background antialiased flex flex-col min-h-screen">
+<!-- TopAppBar -->
+<header class="bg-surface dark:bg-surface-dim font-headline-lg text-headline-lg docked full-width top-0 border-b border-outline-variant dark:border-outline flat no shadows flex justify-between items-center w-full px-gutter h-16 z-50 sticky">
+<div class="font-headline-lg text-headline-lg font-semibold text-primary dark:text-primary-fixed-dim">
+            Playing Socrates
+        </div>
+<div class="hidden md:flex gap-6 items-center">
+</div>
+<div class="flex items-center gap-4">
+<span class="font-label-md text-label-md text-on-surface-variant hidden md:block">Participant ID: #8291</span>
+<div class="flex gap-2">
+<button class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors cursor-pointer transition-all duration-200 w-10 h-10 flex items-center justify-center rounded-full">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+</button>
+<button class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors cursor-pointer transition-all duration-200 w-10 h-10 flex items-center justify-center rounded-full">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+</button>
+</div>
+</div>
+</header>
+<div class="flex flex-1 overflow-hidden h-[calc(100vh-64px)] relative">
+<!-- SideNavBar -->
+<nav class="bg-surface-container-low dark:bg-surface-container-lowest font-label-md text-label-md docked left-0 h-full w-64 border-r border-outline-variant dark:border-outline flat no shadows hidden lg:flex flex-col h-screen fixed left-0 top-16 pt-8 z-40 overflow-y-auto pb-24">
+<div class="px-6 mb-6">
+<h2 class="font-headline-lg text-headline-lg text-primary text-xl mb-1">Learning Progress</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Module 2: Epistemology</p>
+<div class="mt-4 bg-surface-variant h-1 rounded-full overflow-hidden w-full">
+<div class="bg-primary h-full w-[45%]"></div>
+</div>
+<p class="font-label-caps text-label-caps text-on-surface-variant mt-2 text-right">45% Complete</p>
+</div>
+<ul class="flex flex-col gap-1 px-2 flex-1">
+<li>
+<a class="flex items-center gap-3 text-primary dark:text-primary-fixed-dim font-bold border-l-4 border-primary px-4 py-3 bg-secondary-container/30 rounded-r-xl scale-95 active:scale-100 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="menu_book">menu_book</span>
+<span>Curriculum</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 text-on-secondary-fixed-variant dark:text-on-tertiary-fixed-variant px-4 py-3 hover:bg-surface-container-high dark:hover:bg-surface-container transition-colors rounded-r-xl scale-95 active:scale-100 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="dictionary">dictionary</span>
+<span>Glossary</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 text-on-secondary-fixed-variant dark:text-on-tertiary-fixed-variant px-4 py-3 hover:bg-surface-container-high dark:hover:bg-surface-container transition-colors rounded-r-xl scale-95 active:scale-100 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="edit_note">edit_note</span>
+<span>Notebook</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 text-on-secondary-fixed-variant dark:text-on-tertiary-fixed-variant px-4 py-3 hover:bg-surface-container-high dark:hover:bg-surface-container transition-colors rounded-r-xl scale-95 active:scale-100 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="auto_stories">auto_stories</span>
+<span>References</span>
+</a>
+</li>
+</ul>
+<div class="px-6 mt-auto mb-8">
+<button class="w-full border border-secondary text-secondary font-label-md text-label-md py-2 rounded flex justify-center items-center hover:bg-surface-variant transition-colors">
+                    Request Review
+                </button>
+</div>
+</nav>
+<!-- Main Content Area -->
+<main class="flex-1 flex flex-col lg:ml-64 bg-surface h-full w-full relative">
+<!-- Status Bar -->
+<div class="bg-surface-container-lowest border-b border-outline-variant px-gutter py-3 flex justify-between items-center sticky top-0 z-30">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary" data-icon="bolt" data-weight="fill">bolt</span>
+<span class="font-label-caps text-label-caps text-primary tracking-wider uppercase">Direct Mode</span>
+</div>
+<div class="font-label-md text-label-md text-on-surface-variant flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-primary inline-block"></span>
+                    Current Topic: Recognition vs. Recall
+                </div>
+</div>
+<!-- Chat Stream -->
+<div class="flex-1 overflow-y-auto px-margin-mobile md:px-margin-desktop py-8 scroll-smooth" id="chat-container">
+<div class="max-w-[720px] mx-auto flex flex-col gap-6 w-full pb-32">
+<!-- System Context / Time -->
+<div class="text-center font-label-caps text-label-caps text-outline my-4">
+                        Today, 10:42 AM
+                    </div>
+<!-- Student Message -->
+<div class="flex justify-end w-full">
+<div class="bg-surface-container-high text-on-surface rounded-2xl rounded-tr-sm px-6 py-4 max-w-[85%] border border-outline-variant shadow-sm relative">
+<p class="font-body-md text-body-md">Can you explain the difference between recognition and recall in UI design?</p>
+</div>
+</div>
+<!-- AI Message (Direct Mode) -->
+<div class="flex justify-start w-full">
+<div class="bg-surface-container-lowest text-on-surface rounded-2xl rounded-tl-sm px-6 py-5 max-w-[90%] border border-outline-variant shadow-sm relative">
+<div class="flex items-center gap-2 mb-3 border-b border-surface-variant pb-2">
+<span class="material-symbols-outlined text-primary text-sm" data-icon="school">school</span>
+<span class="font-label-caps text-label-caps text-primary">Socrates (Direct Explanation)</span>
+</div>
+<div class="font-body-md text-body-md space-y-4">
+<p>Certainly. The distinction between recognition and recall is a fundamental principle in user interface design, rooted in cognitive psychology.</p>
+<div class="bg-tertiary-fixed/30 border-l-4 border-primary p-4 rounded-r-lg my-4">
+<h4 class="font-label-md text-label-md font-bold mb-1">Recall</h4>
+<p class="font-body-sm text-body-sm">Recall involves retrieving information from memory without specific cues. It requires a deeper cognitive effort. Examples include remembering a specific command line instruction or a password.</p>
+</div>
+<div class="bg-surface-variant/50 border-l-4 border-secondary p-4 rounded-r-lg my-4">
+<h4 class="font-label-md text-label-md font-bold mb-1">Recognition</h4>
+<p class="font-body-sm text-body-sm">Recognition is the ability to easily identify information when presented with it. The interface provides cues that trigger the user's memory. Examples include browsing a visual menu, selecting from a dropdown list, or identifying an icon.</p>
+</div>
+<p class="font-label-md text-label-md font-bold mt-4">Why it matters in UI Design:</p>
+<p>Nielsen's heuristics advocate for "recognition rather than recall." Interfaces should minimize the user's memory load by making objects, actions, and options visible. A user shouldn't have to remember information from one part of the dialogue to another.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Input Area -->
+<div class="absolute bottom-0 left-0 w-full bg-surface-container-lowest border-t border-outline-variant p-4 md:px-margin-desktop md:py-6 z-30 lg:pb-6 pb-24">
+<div class="max-w-[720px] mx-auto relative">
+<form class="flex items-end gap-3" onsubmit="event.preventDefault();">
+<div class="flex-1 relative bg-surface border border-outline-variant rounded-xl focus-within:border-primary focus-within:ring-1 focus-within:ring-primary transition-all shadow-sm overflow-hidden min-h-[56px] flex items-center">
+<textarea class="w-full bg-transparent border-none focus:ring-0 font-body-md text-body-md text-on-surface resize-none py-3 px-4 placeholder:text-outline" placeholder="Ask a follow-up question..." rows="1" style="min-height: 56px;"></textarea>
+</div>
+<button class="bg-primary-container text-on-primary-container w-14 h-14 rounded-xl flex items-center justify-center hover:bg-primary transition-colors flex-shrink-0 shadow-sm" type="submit">
+<span class="material-symbols-outlined" data-icon="send">send</span>
+</button>
+</form>
+<p class="font-label-caps text-label-caps text-outline text-center mt-3 hidden md:block">Direct mode provides immediate answers. Switch to Socratic mode for guided inquiry.</p>
+</div>
+</div>
+</main>
+</div>
+<!-- BottomNavBar -->
+<nav class="bg-surface dark:bg-surface-dim font-label-md text-label-md docked full-width bottom-0 rounded-t-xl border-t border-outline-variant dark:border-outline shadow-sm lg:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center bg-surface px-4 pb-safe h-16">
+<a class="flex flex-col items-center justify-center text-primary dark:text-primary-fixed-dim font-bold py-2 hover:text-primary dark:hover:text-primary-fixed active:scale-90 transition-transform duration-150 w-full" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="chat" data-weight="fill">chat</span>
+<span class="text-[10px]">Chat</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant py-2 hover:text-primary dark:hover:text-primary-fixed active:scale-90 transition-transform duration-150 w-full" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="insights">insights</span>
+<span class="text-[10px]">Progress</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant py-2 hover:text-primary dark:hover:text-primary-fixed active:scale-90 transition-transform duration-150 w-full" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="library_books">library_books</span>
+<span class="text-[10px]">Resources</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant py-2 hover:text-primary dark:hover:text-primary-fixed active:scale-90 transition-transform duration-150 w-full" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="account_circle">account_circle</span>
+<span class="text-[10px]">Profile</span>
+</a>
+</nav>
+<script>
+        // Auto-resize textarea
+        const tx = document.getElementsByTagName("textarea");
+        for (let i = 0; i < tx.length; i++) {
+            tx[i].setAttribute("style", "height:" + (tx[i].scrollHeight) + "px;overflow-y:hidden;");
+            tx[i].addEventListener("input", OnInput, false);
+        }
+
+        function OnInput() {
+            this.style.height = 0;
+            this.style.height = (this.scrollHeight) + "px";
+        }
+    </script>
+</body></html>
