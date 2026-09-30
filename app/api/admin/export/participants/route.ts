@@ -43,6 +43,8 @@ export async function GET(request: NextRequest) {
       .select(`
         id,
         condition,
+        topic,
+        roster_n,
         stage,
         created_at,
         completed_at,
@@ -91,6 +93,8 @@ export async function GET(request: NextRequest) {
     const headers = [
       "participant_id",
       "condition",
+      "topic",
+      "roster_n",
       "stage",
       "consent_at",
       "created_at",
@@ -130,6 +134,8 @@ export async function GET(request: NextRequest) {
         row([
           p.id,
           p.condition,
+          p.topic ?? "",
+          p.roster_n ?? "",
           p.stage,
           p.consent_at,
           p.created_at,

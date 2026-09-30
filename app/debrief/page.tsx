@@ -13,7 +13,8 @@
 import type { Metadata } from "next";
 import { redirect } from "next/navigation";
 import { getCurrentParticipant, getParticipantId } from "@/lib/session";
-import { PLANTED_ERRORS } from "@/lib/plantedErrors";
+import { getPlantedErrorsForTopic } from "@/lib/plantedErrors";
+import type { TopicId } from "@/config/study";
 import DebriefClient from "./DebriefClient";
 
 export const metadata: Metadata = {
@@ -44,11 +45,13 @@ export default async function DebriefPage() {
   }
 
   const completionCode = pid.substring(0, 8).toUpperCase();
+  const topicId = (participant.topic as TopicId) || "procrastination";
+  const plantedErrors = getPlantedErrorsForTopic(topicId);
 
   return (
     <DebriefClient
       completionCode={completionCode}
-      plantedErrors={PLANTED_ERRORS}
+      plantedErrors={plantedErrors}
     />
   );
 }

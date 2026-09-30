@@ -13,7 +13,7 @@ import { getParticipantId } from "@/lib/session";
 import { supabase } from "@/lib/supabase";
 import SessionClient from "./SessionClient";
 import type { ResumedMessage } from "./SessionClient";
-import { STUDY_CONFIG } from "@/config/study";
+import { STUDY_CONFIG, getTopicDisplayName } from "@/config/study";
 
 export const metadata: Metadata = {
   title: "AI Learning Session | Playing Socrates",
@@ -23,6 +23,15 @@ export const metadata: Metadata = {
 export default async function SessionPage() {
   const pid = await getParticipantId();
   if (!pid) redirect("/consent");
+
+  // Fetch participant topic
+  const { data: participant } = await supabase
+    .from("participants")
+    .select("topic")
+    .eq("id", pid)
+    .single();
+
+  const topicDisplayName = getTopicDisplayName(participant?.topic || "procrastination");
 
   // Fetch existing messages for session resume
   const { data: messages } = await supabase
@@ -51,7 +60,7 @@ export default async function SessionPage() {
       resumedMessages={resumedMessages}
       initialStudentTurnIndex={completedStudentTurns}
       maxTurns={STUDY_CONFIG.MAX_TURNS}
-      topic={STUDY_CONFIG.TOPIC}
+      topic={topicDisplayName}
       limitAlreadyReached={limitAlreadyReached}
     />
   );

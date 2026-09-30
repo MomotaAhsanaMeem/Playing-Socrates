@@ -17,23 +17,42 @@ import { supabase } from "@/lib/supabase";
 import pretestItems from "@/content/pretest.json";
 import posttestItems from "@/content/posttest.json";
 
-type Form = "A" | "B";
-
 interface ItemAnswer {
   itemId: string;
   chosenIndex: number;
 }
 
 interface SubmitBody {
-  form: Form;
+  form?: string;
   answers: ItemAnswer[];
   timeTakenSeconds: number;
 }
 
 /** Map item id → correct index, built once at module load time (server-only). */
 const ANSWER_KEY: Record<string, number> = {};
-for (const item of pretestItems)  ANSWER_KEY[item.id] = item.correctIndex;
-for (const item of posttestItems) ANSWER_KEY[item.id] = item.correctIndex;
+
+function registerItems(list: unknown[]) {
+  for (const entry of list as Array<Record<string, unknown>>) {
+    const items =
+      entry.pretest || entry.posttest || entry.items || (Array.isArray(entry) ? entry : null);
+    if (Array.isArray(items)) {
+      for (const item of items as Array<Record<string, unknown>>) {
+        const id = (item.itemId || item.id) as string;
+        if (id && typeof item.correctIndex === "number") {
+          ANSWER_KEY[id] = item.correctIndex;
+        }
+      }
+    } else if (entry.itemId || entry.id) {
+      const id = (entry.itemId || entry.id) as string;
+      if (id && typeof entry.correctIndex === "number") {
+        ANSWER_KEY[id] = entry.correctIndex;
+      }
+    }
+  }
+}
+
+registerItems(pretestItems);
+registerItems(posttestItems);
 
 export async function POST(request: NextRequest) {
   try {
@@ -43,14 +62,29 @@ export async function POST(request: NextRequest) {
     }
 
     const body: SubmitBody = await request.json();
-    const { form, answers, timeTakenSeconds } = body;
+    const { answers, timeTakenSeconds } = body;
 
-    if (!form || !["A", "B"].includes(form)) {
-      return Response.json({ error: "Invalid form" }, { status: 400 });
-    }
     if (!Array.isArray(answers) || answers.length === 0) {
       return Response.json({ error: "No answers provided" }, { status: 400 });
     }
+
+    // Determine whether this is pretest or posttest based on current stage in DB
+    const { data: participant, error: pErr } = await supabase
+      .from("participants")
+      .select("stage")
+      .eq("id", pid)
+      .single();
+
+    if (pErr || !participant) {
+      return Response.json({ error: "Participant not found" }, { status: 404 });
+    }
+
+    const isPretest = participant.stage === "pretest";
+    const fromStage = isPretest ? "pretest" : "posttest";
+    const toStage   = isPretest ? "session" : "trust";
+    const timeField = isPretest ? "pre_time_s" : "post_time_s";
+    const scoreField = isPretest ? "pre_score" : "post_score";
+    const stageForm = isPretest ? "pretest" : "posttest";
 
     // ── Score answers ────────────────────────────────────────────────────────
     let score = 0;
@@ -63,7 +97,7 @@ export async function POST(request: NextRequest) {
       if (isCorrect) score++;
       return {
         participant_id: pid,
-        form,
+        form:           body.form ?? stageForm,
         item_id:        itemId,
         chosen_index:   chosenIndex,
         is_correct:     isCorrect,
@@ -72,9 +106,21 @@ export async function POST(request: NextRequest) {
     });
 
     // ── Persist item-level responses ─────────────────────────────────────────
-    const { error: respErr } = await supabase
+    let { error: respErr } = await supabase
       .from("test_responses")
       .insert(responseRows);
+
+    // Fallback if migration 003 hasn't run yet in Supabase and check constraint requires 'A' or 'B'
+    if (respErr && (respErr.message?.includes("check") || respErr.code === "23514")) {
+      const fallbackRows = responseRows.map((r) => ({
+        ...r,
+        form: isPretest ? "A" : "B",
+      }));
+      const fallbackResult = await supabase
+        .from("test_responses")
+        .insert(fallbackRows);
+      respErr = fallbackResult.error;
+    }
 
     if (respErr) {
       console.error("test_responses insert error:", respErr);
@@ -82,9 +128,6 @@ export async function POST(request: NextRequest) {
     }
 
     // ── Upsert test_scores (pre_score or post_score) ─────────────────────────
-    const timeField   = form === "A" ? "pre_time_s"  : "post_time_s";
-    const scoreField  = form === "A" ? "pre_score"   : "post_score";
-
     const { error: scoreErr } = await supabase
       .from("test_scores")
       .upsert(
@@ -102,9 +145,6 @@ export async function POST(request: NextRequest) {
     }
 
     // ── Advance stage ────────────────────────────────────────────────────────
-    const fromStage = form === "A" ? "pretest"  : "posttest";
-    const toStage   = form === "A" ? "session"  : "trust";
-
     await advanceStage(pid, fromStage, toStage);
 
     // ── Return only the score (not the answer key) ───────────────────────────

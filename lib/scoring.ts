@@ -138,7 +138,33 @@ export function computeCalibrationGap(
   return { trustCorrectMean, trustPlantedMean, calibrationGap };
 }
 
+// ── Test Scoring ──────────────────────────────────────────────────────────
+/** Maximum score per test stage (5 items per topic, TOPIC_SETS.md). */
+export const MAX_TEST_SCORE = 5;
+
+/** Minimum possible learning gain (-5). */
+export const MIN_LEARNING_GAIN = -5;
+
+/** Maximum possible learning gain (+5). */
+export const MAX_LEARNING_GAIN = 5;
+
+/**
+ * Computes learning gain across the 5 items for the participant's assigned topic (TOPIC_SETS.md).
+ * pre_score and post_score are integers 0 to 5.
+ * learning_gain = post_score − pre_score (range -5 to +5).
+ */
+export function computeLearningGain(
+  preScore: number | null | undefined,
+  postScore: number | null | undefined
+): number | null {
+  if (preScore === null || preScore === undefined || postScore === null || postScore === undefined) {
+    return null;
+  }
+  return postScore - preScore;
+}
+
 // ── Utilities ─────────────────────────────────────────────────────────────
 function mean(values: number[]): number {
   return values.reduce((a, b) => a + b, 0) / values.length;
 }
+

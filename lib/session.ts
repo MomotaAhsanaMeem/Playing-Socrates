@@ -48,7 +48,14 @@ export async function getCurrentParticipant() {
     .select("*")
     .eq("id", id)
     .single();
-  return data ?? null;
+  if (!data) return null;
+
+  // Normalize fallback from background if migration 002 hasn't been run yet
+  const bg = (data.background as Record<string, unknown>) ?? {};
+  if (!data.topic && bg.topic) data.topic = bg.topic;
+  if (!data.roster_n && bg.roster_n) data.roster_n = bg.roster_n;
+
+  return data;
 }
 
 /**

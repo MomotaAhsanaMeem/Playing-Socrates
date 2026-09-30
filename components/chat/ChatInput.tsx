@@ -15,8 +15,11 @@ interface ChatInputProps {
   onSubmit: () => void;
   disabled?: boolean;
   placeholder?: string;
-  /** If true, shows a turn counter (e.g. "3 / 8 turns used") */
+  /** If true, shows a turn counter (e.g. "3 / 5 turns used") */
   turnInfo?: { used: number; max: number };
+  /** Optional callback if the user chooses to finish session early */
+  onFinishEarly?: () => void;
+  isFinishing?: boolean;
 }
 
 export default function ChatInput({
@@ -26,6 +29,8 @@ export default function ChatInput({
   disabled = false,
   placeholder = "Type your response...",
   turnInfo,
+  onFinishEarly,
+  isFinishing = false,
 }: ChatInputProps) {
   const textareaRef = useRef<HTMLTextAreaElement>(null);
 
@@ -82,13 +87,26 @@ export default function ChatInput({
           </button>
         </form>
 
-        {/* Turn counter hint */}
-        {turnInfo && (
-          <p className="font-[var(--font-ui)] text-[length:var(--text-label-caps)] text-[var(--color-outline)] text-center mt-3">
-            {turnInfo.used} of {turnInfo.max} turns used
-            {turnInfo.used >= turnInfo.max && " — session complete"}
-          </p>
-        )}
+        {/* Turn counter hint & early finish option */}
+        <div className="flex flex-wrap items-center justify-between gap-2 mt-3 px-1">
+          {turnInfo && (
+            <p className="font-[var(--font-ui)] text-[length:var(--text-label-caps)] text-[var(--color-outline)]">
+              {turnInfo.used} of {turnInfo.max} sets used
+              {turnInfo.used >= turnInfo.max && " — session complete"}
+            </p>
+          )}
+          {onFinishEarly && turnInfo && turnInfo.used > 0 && turnInfo.used < turnInfo.max && !disabled && (
+            <button
+              type="button"
+              id="chat-finish-early-btn"
+              onClick={onFinishEarly}
+              disabled={isFinishing}
+              className="font-[var(--font-ui)] text-[length:var(--text-label-sm)] text-[var(--color-primary)] hover:underline flex items-center gap-1 cursor-pointer transition-colors ml-auto"
+            >
+              {isFinishing ? "Proceeding…" : "Ready for Post-Test? Complete session →"}
+            </button>
+          )}
+        </div>
       </div>
     </div>
   );

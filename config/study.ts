@@ -1,26 +1,50 @@
 /**
  * config/study.ts
- * Central study configuration. Change TOPIC here and all prompts update automatically.
+ * Central study configuration.
+ * Spec §5 / TOPICS.md §1 & §5: Multi-topic roster assignment.
  */
 
+export interface TopicDefinition {
+  topicId: TopicId;
+  displayName: string;
+}
+
+export const TOPICS = [
+  { topicId: "procrastination", displayName: "Procrastination" },
+  { topicId: "multitasking", displayName: "Multitasking" },
+  { topicId: "sleep", displayName: "Sleep and Memory" },
+  { topicId: "impulse_buying", displayName: "Impulse Buying and Online Shopping Tricks" },
+  { topicId: "password_safety", displayName: "Password and Account Safety" },
+] as const;
+
+export const topics = TOPICS;
+
+export type TopicId =
+  | "procrastination"
+  | "multitasking"
+  | "sleep"
+  | "impulse_buying"
+  | "password_safety";
+
+export type TestSet = "A" | "B";
+
+export function getTopicDisplayName(topicId: string): string {
+  const found = TOPICS.find((t) => t.topicId === topicId);
+  return found ? found.displayName : topicId;
+}
+
 export const STUDY_CONFIG = {
-  /** The topic the AI tutor teaches. Injected into all system prompts. */
-  TOPIC: "Photosynthesis",
+  /** The 5 study topics */
+  TOPICS,
 
   /**
    * Maximum number of student turns in the AI session.
    * After this many student messages the chat gate opens.
    */
-  MAX_TURNS: 8,
-
-  /**
-   * Block randomisation size.
-   * Every BLOCK_SIZE participants get exactly one of each condition.
-   */
-  BLOCK_SIZE: 3,
+  MAX_TURNS: 5,
 
   /** Conditions must match the DB check constraint */
-  CONDITIONS: ["direct", "socratic", "adaptive"] as const,
+  CONDITIONS: ["socratic", "direct", "adaptive"] as const,
 
   /** Stage names (must match DB check constraint) */
   STAGES: [

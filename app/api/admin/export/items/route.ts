@@ -41,10 +41,10 @@ export async function GET(request: NextRequest) {
   const includeIncomplete = searchParams.get("includeIncomplete") === "true";
 
   try {
-    // Qualifying participant IDs + condition map
+    // Qualifying participant IDs + participant details map
     let pQuery = supabase
       .from("participants")
-      .select("id, condition");
+      .select("id, condition, topic");
     if (!includeIncomplete) {
       pQuery = pQuery.eq("stage", "complete");
     }
@@ -52,15 +52,22 @@ export async function GET(request: NextRequest) {
     if (pErr) throw pErr;
 
     const ids = (participants ?? []).map((p) => p.id);
-    const condMap = Object.fromEntries(
-      (participants ?? []).map((p) => [p.id, p.condition])
+    const pMap = Object.fromEntries(
+      (participants ?? []).map((p) => [
+        p.id,
+        {
+          condition: p.condition,
+          topic: p.topic ?? "",
+        },
+      ])
     );
 
     const headers = [
       "participant_id",
       "condition",
+      "topic",
       "source",       // "test" | "questionnaire"
-      "form_or_type", // "A" | "B" | "trust" | "load"
+      "form_or_type", // "pretest" | "posttest" | "trust" | "load"
       "item_id",
       "chosen_index_or_value",
       "is_correct",   // 1 | 0 | "" (for questionnaires)
@@ -81,10 +88,12 @@ export async function GET(request: NextRequest) {
       if (tErr) throw tErr;
 
       for (const r of testRows ?? []) {
+        const pInfo = pMap[r.participant_id] ?? { condition: "", topic: "" };
         lines.push(
           row([
             r.participant_id,
-            condMap[r.participant_id] ?? "",
+            pInfo.condition,
+            pInfo.topic,
             "test",
             r.form,
             r.item_id,
@@ -105,10 +114,12 @@ export async function GET(request: NextRequest) {
       if (qErr) throw qErr;
 
       for (const r of qRows ?? []) {
+        const pInfo = pMap[r.participant_id] ?? { condition: "", topic: "" };
         lines.push(
           row([
             r.participant_id,
-            condMap[r.participant_id] ?? "",
+            pInfo.condition,
+            pInfo.topic,
             "questionnaire",
             r.type,
             r.item_id,

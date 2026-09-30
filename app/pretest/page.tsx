@@ -1,17 +1,18 @@
 /**
  * app/pretest/page.tsx
- * Pre-Test (Form A) — 10 MCQs on Photosynthesis.
+ * Pre-Test Assessment — single matched item for the participant's assigned topic and set (A or B).
  *
  * • Correct answers are NEVER sent to the client.
- * • Questions loaded from /content/pretest.json (options only, no correctIndex).
- * • Submission POSTs to /api/test/submit which scores server-side and
- *   advances the stage to "session".
+ * • Questions filtered server-side by assigned topic and test set.
+ * • Submission POSTs to /api/test/submit which scores server-side and advances to "session".
  */
 
 import type { Metadata } from "next";
+import { redirect } from "next/navigation";
+import { getParticipantId, getCurrentParticipant } from "@/lib/session";
 import PretestClient from "./PretestClient";
-// Load questions server-side and strip correctIndex before sending to client
-import rawItems from "@/content/pretest.json";
+import rawPretest from "@/content/pretest.json";
+import { TopicId } from "@/config/study";
 
 export const metadata: Metadata = {
   title: "Pre-Test Assessment | Playing Socrates",
@@ -25,13 +26,22 @@ export interface SafeQuestion {
   options: string[];
 }
 
-export default function PretestPage() {
+export default async function PretestPage() {
+  const pid = await getParticipantId();
+  if (!pid) redirect("/consent");
+
+  const participant = await getCurrentParticipant();
+  const topicId = (participant?.topic as TopicId) || "procrastination";
+
+  const topicEntry = rawPretest.find((t) => t.topicId === topicId);
+  const assignedItems = topicEntry?.pretest || topicEntry?.items || [];
+
   // Strip correctIndex server-side so it never reaches the browser
-  const questions: SafeQuestion[] = rawItems.map(({ id, question, options }) => ({
-    id,
-    question,
-    options,
+  const questions: SafeQuestion[] = assignedItems.map((item) => ({
+    id: item.itemId || item.id,
+    question: item.question,
+    options: item.options,
   }));
 
-  return <PretestClient questions={questions} form="A" />;
+  return <PretestClient questions={questions} />;
 }

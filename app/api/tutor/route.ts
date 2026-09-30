@@ -26,8 +26,8 @@ import {
   getPlantedError,
   buildPlantedErrorInstruction,
 } from "@/lib/plantedErrors";
-import { STUDY_CONFIG } from "@/config/study";
-import type { Condition } from "@/config/study";
+import { STUDY_CONFIG, getTopicDisplayName } from "@/config/study";
+import type { Condition, TopicId } from "@/config/study";
 
 // ── Constants (spec §5) ───────────────────────────────────────────────────────
 const MODEL_NAME  = "gemini-3.5-flash-lite";
@@ -145,7 +145,7 @@ export async function POST(request: NextRequest) {
     // 2. Fetch participant record (need condition)
     const { data: participant, error: pErr } = await supabase
       .from("participants")
-      .select("condition, stage")
+      .select("condition, stage, topic")
       .eq("id", pid)
       .single();
 
@@ -158,6 +158,8 @@ export async function POST(request: NextRequest) {
     }
 
     const condition = participant.condition as Condition;
+    const topicId = (participant.topic as TopicId) || "procrastination";
+    const topicDisplayName = getTopicDisplayName(topicId);
 
     // 3. Parse request body
     const body: TutorRequestBody = await request.json();
@@ -179,10 +181,10 @@ export async function POST(request: NextRequest) {
     }
 
     // 5. Build system prompt
-    let systemPrompt = buildSystemPrompt(condition, STUDY_CONFIG.TOPIC);
+    let systemPrompt = buildSystemPrompt(condition, topicDisplayName);
 
     // 6. Check for planted error on this turn
-    const plantedError = getPlantedError(studentTurnIndex);
+    const plantedError = getPlantedError(topicId, studentTurnIndex);
     const isPlantedError = plantedError !== null;
     if (isPlantedError) {
       systemPrompt += buildPlantedErrorInstruction(plantedError!);

@@ -265,30 +265,51 @@ export default function SessionClient({
       */}
       <div className="relative flex flex-col" style={{ height: '100dvh' }}>
         {/* ── Top bar ──────────────────────────────────────────────────────── */}
-        <div className="flex-none px-[var(--spacing-gutter)] py-4 border-b border-[var(--color-outline-variant)]/40 bg-[var(--color-background)]/80 backdrop-blur-md hidden md:block">
-          <div className="max-w-[var(--spacing-content-max)] mx-auto flex items-center justify-between">
+        <div className="flex-none px-4 md:px-[var(--spacing-gutter)] py-3 md:py-4 border-b border-[var(--color-outline-variant)]/40 bg-[var(--color-background)]/80 backdrop-blur-md">
+          <div className="max-w-[var(--spacing-content-max)] mx-auto flex items-center justify-between gap-4">
             <div>
-              <h1 className="font-[var(--font-display)] text-[length:var(--text-headline-lg-mobile)] font-bold text-[var(--color-on-surface)]">
+              <h1 className="font-[var(--font-display)] text-base md:text-[length:var(--text-headline-lg-mobile)] font-bold text-[var(--color-on-surface)] leading-tight">
                 AI Learning Session
               </h1>
-              <p className="font-[var(--font-ui)] text-[length:var(--text-label-md)] text-[var(--color-on-surface-variant)] mt-0.5">
+              <p className="font-[var(--font-ui)] text-xs md:text-[length:var(--text-label-md)] text-[var(--color-on-surface-variant)] mt-0.5">
                 Topic: <span className="font-semibold">{topic}</span>
               </p>
             </div>
-            {/* Turn counter */}
-            <div className="flex flex-col items-end gap-1">
-              <span className="font-[var(--font-ui)] text-[length:var(--text-label-md)] text-[var(--color-on-surface-variant)]">
-                Turns used
-              </span>
-              <span className="font-[var(--font-ui)] text-[length:var(--text-headline-lg-mobile)] font-bold text-[var(--color-primary)]">
-                {Math.min(studentTurnIndex, maxTurns)}<span className="text-[var(--color-outline)] font-normal text-sm"> / {maxTurns}</span>
-              </span>
-              {/* Mini progress bar */}
-              <div className="w-32 h-1.5 bg-[var(--color-surface-container)] rounded-full overflow-hidden">
-                <div
-                  className="h-full bg-[var(--color-primary)] rounded-full transition-all duration-500"
-                  style={{ width: `${Math.min((studentTurnIndex / maxTurns) * 100, 100)}%` }}
-                />
+
+            <div className="flex items-center gap-3 md:gap-5">
+              {/* Early advance button when user has completed at least 1 set and not waiting for rating */}
+              {studentTurnIndex > 0 && !limitReached && !lastAiNeedsRating && (
+                <Button
+                  id="top-bar-continue-btn"
+                  variant="secondary"
+                  size="sm"
+                  onClick={handleContinue}
+                  isLoading={isAdvancing}
+                  className="text-xs md:text-sm whitespace-nowrap"
+                >
+                  <span className="hidden sm:inline">Finish &amp; </span>Continue
+                  <span className="material-symbols-outlined text-xs md:text-sm" aria-hidden="true">
+                    arrow_forward
+                  </span>
+                </Button>
+              )}
+
+              {/* Turn counter */}
+              <div className="flex flex-col items-end gap-1">
+                <span className="font-[var(--font-ui)] text-[10px] md:text-[length:var(--text-label-md)] text-[var(--color-on-surface-variant)]">
+                  Sets used
+                </span>
+                <span className="font-[var(--font-ui)] text-sm md:text-[length:var(--text-headline-lg-mobile)] font-bold text-[var(--color-primary)]">
+                  {Math.min(studentTurnIndex, maxTurns)}
+                  <span className="text-[var(--color-outline)] font-normal text-xs md:text-sm"> / {maxTurns}</span>
+                </span>
+                {/* Mini progress bar */}
+                <div className="w-20 md:w-32 h-1.5 bg-[var(--color-surface-container)] rounded-full overflow-hidden">
+                  <div
+                    className="h-full bg-[var(--color-primary)] rounded-full transition-all duration-500"
+                    style={{ width: `${Math.min((studentTurnIndex / maxTurns) * 100, 100)}%` }}
+                  />
+                </div>
               </div>
             </div>
           </div>
@@ -310,7 +331,7 @@ export default function SessionClient({
                   Ready to learn?
                 </h2>
                 <p className="font-[var(--font-body)] text-[length:var(--text-body-md)] text-[var(--color-on-surface-variant)] max-w-sm">
-                  Ask your AI tutor anything about <strong>{topic}</strong>. You have {maxTurns} turns.
+                  Ask your AI tutor anything about <strong>{topic}</strong>. You have up to {maxTurns} sets, or you can finish earlier whenever you&apos;re ready.
                 </p>
               </div>
             )}
@@ -382,7 +403,7 @@ export default function SessionClient({
                   Session complete!
                 </h2>
                 <p className="font-[var(--font-body)] text-[length:var(--text-body-md)] text-[var(--color-on-surface-variant)] mb-6">
-                  You&apos;ve used all {maxTurns} turns. When you&apos;re ready, continue to the post-test.
+                  You&apos;ve completed your study session. When you&apos;re ready, continue to the post-test.
                 </p>
                 <Button
                   id="continue-to-posttest-btn"
@@ -404,16 +425,6 @@ export default function SessionClient({
         </div>
 
         {/* ── Input bar — absolute bottom-0 of the outer relative container ── */}
-        {/*
-          ChatInput uses `absolute bottom-0 left-0 w-full z-30` internally.
-          It anchors to the nearest `position: relative` ancestor — which is
-          now the outer `relative flex-col` div. This pins it correctly at the
-          viewport bottom regardless of message count.
-
-          Key fix: pass `disabled={inputBlocked}` (not `!canSend`) so the
-          textarea is focusable/typeable even when empty. The send button
-          inside ChatInput independently checks `!value.trim()`.
-        */}
         {!limitReached && (
           <ChatInput
             value={inputValue}
@@ -426,6 +437,8 @@ export default function SessionClient({
                 : `Ask the AI tutor anything about ${topic}\u2026`
             }
             turnInfo={{ used: studentTurnIndex, max: maxTurns }}
+            onFinishEarly={studentTurnIndex > 0 && !lastAiNeedsRating ? handleContinue : undefined}
+            isFinishing={isAdvancing}
           />
         )}
       </div>

@@ -1,122 +1,687 @@
 [
   {
-    "id": "A1",
-    "question": "Which organelle is the primary site of photosynthesis in plant cells?",
-    "options": [
-      "Mitochondrion",
-      "Ribosome",
-      "Chloroplast",
-      "Vacuole"
+    "topicId": "procrastination",
+    "pretest": [
+      {
+        "itemId": "procrastination_pre_1",
+        "id": "procrastination_pre_1",
+        "concept": "cause",
+        "question": "Why do people most often procrastinate?",
+        "options": [
+          "They are lazy by nature",
+          "They are avoiding a task that feels stressful, boring, or difficult",
+          "They have too much free time",
+          "They don't understand the assignment"
+        ],
+        "correctIndex": 1
+      },
+      {
+        "itemId": "procrastination_pre_2",
+        "id": "procrastination_pre_2",
+        "concept": "effect of delay",
+        "question": "What usually happens when you repeatedly delay a task?",
+        "options": [
+          "The task becomes easier over time",
+          "Stress and last-minute pressure tend to increase",
+          "Motivation increases the longer you wait",
+          "Nothing changes either way"
+        ],
+        "correctIndex": 1
+      },
+      {
+        "itemId": "procrastination_pre_3",
+        "id": "procrastination_pre_3",
+        "concept": "best way to start",
+        "question": "You keep putting off starting an assignment. Which approach is most likely to help?",
+        "options": [
+          "Wait until you feel motivated",
+          "Tell yourself you'll start when the deadline is close",
+          "Commit to working on it for just 5 minutes",
+          "Clean your whole room first"
+        ],
+        "correctIndex": 2
+      },
+      {
+        "itemId": "procrastination_pre_4",
+        "id": "procrastination_pre_4",
+        "concept": "deadline behavior",
+        "question": "Which pattern is most common among procrastinators near a deadline?",
+        "options": [
+          "Calm, steady work at a normal pace",
+          "A rush of last-minute effort under pressure",
+          "Completing the task early to relax",
+          "Ignoring the deadline completely"
+        ],
+        "correctIndex": 1
+      },
+      {
+        "itemId": "procrastination_pre_5",
+        "id": "procrastination_pre_5",
+        "concept": "breaking tasks down",
+        "question": "What's the benefit of breaking a large task into small steps?",
+        "options": [
+          "It makes the task take longer overall",
+          "It lowers the perceived difficulty and makes starting easier",
+          "It has no effect on how you feel about the task",
+          "It only helps with physical tasks, not schoolwork"
+        ],
+        "correctIndex": 1
+      }
     ],
-    "correctIndex": 2,
-    "concept": "chloroplast-structure"
+    "items": [
+      {
+        "itemId": "procrastination_pre_1",
+        "id": "procrastination_pre_1",
+        "concept": "cause",
+        "question": "Why do people most often procrastinate?",
+        "options": [
+          "They are lazy by nature",
+          "They are avoiding a task that feels stressful, boring, or difficult",
+          "They have too much free time",
+          "They don't understand the assignment"
+        ],
+        "correctIndex": 1
+      },
+      {
+        "itemId": "procrastination_pre_2",
+        "id": "procrastination_pre_2",
+        "concept": "effect of delay",
+        "question": "What usually happens when you repeatedly delay a task?",
+        "options": [
+          "The task becomes easier over time",
+          "Stress and last-minute pressure tend to increase",
+          "Motivation increases the longer you wait",
+          "Nothing changes either way"
+        ],
+        "correctIndex": 1
+      },
+      {
+        "itemId": "procrastination_pre_3",
+        "id": "procrastination_pre_3",
+        "concept": "best way to start",
+        "question": "You keep putting off starting an assignment. Which approach is most likely to help?",
+        "options": [
+          "Wait until you feel motivated",
+          "Tell yourself you'll start when the deadline is close",
+          "Commit to working on it for just 5 minutes",
+          "Clean your whole room first"
+        ],
+        "correctIndex": 2
+      },
+      {
+        "itemId": "procrastination_pre_4",
+        "id": "procrastination_pre_4",
+        "concept": "deadline behavior",
+        "question": "Which pattern is most common among procrastinators near a deadline?",
+        "options": [
+          "Calm, steady work at a normal pace",
+          "A rush of last-minute effort under pressure",
+          "Completing the task early to relax",
+          "Ignoring the deadline completely"
+        ],
+        "correctIndex": 1
+      },
+      {
+        "itemId": "procrastination_pre_5",
+        "id": "procrastination_pre_5",
+        "concept": "breaking tasks down",
+        "question": "What's the benefit of breaking a large task into small steps?",
+        "options": [
+          "It makes the task take longer overall",
+          "It lowers the perceived difficulty and makes starting easier",
+          "It has no effect on how you feel about the task",
+          "It only helps with physical tasks, not schoolwork"
+        ],
+        "correctIndex": 1
+      }
+    ]
   },
   {
-    "id": "A2",
-    "question": "What is the overall chemical equation for photosynthesis?",
-    "options": [
-      "6CO₂ + 6H₂O → C₆H₁₂O₆ + 6O₂",
-      "C₆H₁₂O₆ + 6O₂ → 6CO₂ + 6H₂O",
-      "6CO₂ + 6O₂ → C₆H₁₂O₆ + 6H₂O",
-      "6H₂O + 6O₂ → C₆H₁₂O₆ + 6CO₂"
+    "topicId": "multitasking",
+    "pretest": [
+      {
+        "itemId": "multitasking_pre_1",
+        "id": "multitasking_pre_1",
+        "concept": "does it work",
+        "question": "Can the brain truly process two complex tasks at the exact same time?",
+        "options": [
+          "Yes, with no cost to performance",
+          "No — it rapidly switches attention, which has a cost",
+          "Only if both tasks are easy",
+          "Only people with high intelligence can do this"
+        ],
+        "correctIndex": 1
+      },
+      {
+        "itemId": "multitasking_pre_2",
+        "id": "multitasking_pre_2",
+        "concept": "errors",
+        "question": "You switch between reading notes and replying to messages. What usually happens?",
+        "options": [
+          "You finish faster",
+          "You take longer and make more mistakes",
+          "Your memory improves",
+          "Nothing changes"
+        ],
+        "correctIndex": 1
+      },
+      {
+        "itemId": "multitasking_pre_3",
+        "id": "multitasking_pre_3",
+        "concept": "comprehension while distracted",
+        "question": "Listening to a podcast while reading a textbook closely tends to:",
+        "options": [
+          "Improve comprehension of both",
+          "Have no effect on comprehension",
+          "Reduce comprehension of the reading, the podcast, or both",
+          "Only affect the podcast, never the reading"
+        ],
+        "correctIndex": 2
+      },
+      {
+        "itemId": "multitasking_pre_4",
+        "id": "multitasking_pre_4",
+        "concept": "speed myth",
+        "question": "Compared to focusing on one task at a time, multitasking usually makes total completion time:",
+        "options": [
+          "Shorter",
+          "Longer, due to switching costs",
+          "Exactly the same",
+          "Impossible to predict"
+        ],
+        "correctIndex": 1
+      },
+      {
+        "itemId": "multitasking_pre_5",
+        "id": "multitasking_pre_5",
+        "concept": "best study setup",
+        "question": "Which study setup is generally most effective?",
+        "options": [
+          "TV on in the background",
+          "Group chat open in case of messages",
+          "Phone on silent, one task at a time in focused blocks",
+          "Switching between subjects every few minutes"
+        ],
+        "correctIndex": 2
+      }
     ],
-    "correctIndex": 0,
-    "concept": "overall-equation"
+    "items": [
+      {
+        "itemId": "multitasking_pre_1",
+        "id": "multitasking_pre_1",
+        "concept": "does it work",
+        "question": "Can the brain truly process two complex tasks at the exact same time?",
+        "options": [
+          "Yes, with no cost to performance",
+          "No — it rapidly switches attention, which has a cost",
+          "Only if both tasks are easy",
+          "Only people with high intelligence can do this"
+        ],
+        "correctIndex": 1
+      },
+      {
+        "itemId": "multitasking_pre_2",
+        "id": "multitasking_pre_2",
+        "concept": "errors",
+        "question": "You switch between reading notes and replying to messages. What usually happens?",
+        "options": [
+          "You finish faster",
+          "You take longer and make more mistakes",
+          "Your memory improves",
+          "Nothing changes"
+        ],
+        "correctIndex": 1
+      },
+      {
+        "itemId": "multitasking_pre_3",
+        "id": "multitasking_pre_3",
+        "concept": "comprehension while distracted",
+        "question": "Listening to a podcast while reading a textbook closely tends to:",
+        "options": [
+          "Improve comprehension of both",
+          "Have no effect on comprehension",
+          "Reduce comprehension of the reading, the podcast, or both",
+          "Only affect the podcast, never the reading"
+        ],
+        "correctIndex": 2
+      },
+      {
+        "itemId": "multitasking_pre_4",
+        "id": "multitasking_pre_4",
+        "concept": "speed myth",
+        "question": "Compared to focusing on one task at a time, multitasking usually makes total completion time:",
+        "options": [
+          "Shorter",
+          "Longer, due to switching costs",
+          "Exactly the same",
+          "Impossible to predict"
+        ],
+        "correctIndex": 1
+      },
+      {
+        "itemId": "multitasking_pre_5",
+        "id": "multitasking_pre_5",
+        "concept": "best study setup",
+        "question": "Which study setup is generally most effective?",
+        "options": [
+          "TV on in the background",
+          "Group chat open in case of messages",
+          "Phone on silent, one task at a time in focused blocks",
+          "Switching between subjects every few minutes"
+        ],
+        "correctIndex": 2
+      }
+    ]
   },
   {
-    "id": "A3",
-    "question": "In which part of the chloroplast do the light-dependent reactions occur?",
-    "options": [
-      "Stroma",
-      "Outer membrane",
-      "Thylakoid membrane",
-      "Intermembrane space"
+    "topicId": "sleep",
+    "pretest": [
+      {
+        "itemId": "sleep_pre_1",
+        "id": "sleep_pre_1",
+        "concept": "role in memory",
+        "question": "What does sleep do for learning?",
+        "options": [
+          "Nothing, it only rests the body",
+          "It erases unimportant study material",
+          "It only matters for physical skills",
+          "It helps the brain store what you learned"
+        ],
+        "correctIndex": 3
+      },
+      {
+        "itemId": "sleep_pre_2",
+        "id": "sleep_pre_2",
+        "concept": "all-nighters",
+        "question": "How does an all-nighter before an exam typically compare to a full night's sleep, for recall?",
+        "options": [
+          "It usually works about as well",
+          "It usually works better, because of extra study time",
+          "It usually performs worse for recall and reasoning",
+          "There is no measurable difference"
+        ],
+        "correctIndex": 2
+      },
+      {
+        "itemId": "sleep_pre_3",
+        "id": "sleep_pre_3",
+        "concept": "sleep before exams",
+        "question": "What is the best choice the night before an important exam?",
+        "options": [
+          "Study all night",
+          "Review, then get 7 to 9 hours of sleep",
+          "Sleep only 3 hours and wake up early to cram",
+          "Skip sleep and rely on energy drinks"
+        ],
+        "correctIndex": 1
+      },
+      {
+        "itemId": "sleep_pre_4",
+        "id": "sleep_pre_4",
+        "concept": "deprivation and reasoning",
+        "question": "Sleep deprivation mainly affects which mental abilities?",
+        "options": [
+          "None — only physical energy is affected",
+          "Recall and reasoning are measurably impaired",
+          "Only creativity is affected, not memory",
+          "Only long-term memory from years ago"
+        ],
+        "correctIndex": 1
+      },
+      {
+        "itemId": "sleep_pre_5",
+        "id": "sleep_pre_5",
+        "concept": "naps",
+        "question": "How can a very long daytime nap affect that night's sleep?",
+        "options": [
+          "It always improves nighttime sleep quality",
+          "It has no effect on nighttime sleep",
+          "It can disrupt or reduce nighttime sleep quality",
+          "It only affects sleep on weekends"
+        ],
+        "correctIndex": 2
+      }
     ],
-    "correctIndex": 2,
-    "concept": "light-reactions"
+    "items": [
+      {
+        "itemId": "sleep_pre_1",
+        "id": "sleep_pre_1",
+        "concept": "role in memory",
+        "question": "What does sleep do for learning?",
+        "options": [
+          "Nothing, it only rests the body",
+          "It erases unimportant study material",
+          "It only matters for physical skills",
+          "It helps the brain store what you learned"
+        ],
+        "correctIndex": 3
+      },
+      {
+        "itemId": "sleep_pre_2",
+        "id": "sleep_pre_2",
+        "concept": "all-nighters",
+        "question": "How does an all-nighter before an exam typically compare to a full night's sleep, for recall?",
+        "options": [
+          "It usually works about as well",
+          "It usually works better, because of extra study time",
+          "It usually performs worse for recall and reasoning",
+          "There is no measurable difference"
+        ],
+        "correctIndex": 2
+      },
+      {
+        "itemId": "sleep_pre_3",
+        "id": "sleep_pre_3",
+        "concept": "sleep before exams",
+        "question": "What is the best choice the night before an important exam?",
+        "options": [
+          "Study all night",
+          "Review, then get 7 to 9 hours of sleep",
+          "Sleep only 3 hours and wake up early to cram",
+          "Skip sleep and rely on energy drinks"
+        ],
+        "correctIndex": 1
+      },
+      {
+        "itemId": "sleep_pre_4",
+        "id": "sleep_pre_4",
+        "concept": "deprivation and reasoning",
+        "question": "Sleep deprivation mainly affects which mental abilities?",
+        "options": [
+          "None — only physical energy is affected",
+          "Recall and reasoning are measurably impaired",
+          "Only creativity is affected, not memory",
+          "Only long-term memory from years ago"
+        ],
+        "correctIndex": 1
+      },
+      {
+        "itemId": "sleep_pre_5",
+        "id": "sleep_pre_5",
+        "concept": "naps",
+        "question": "How can a very long daytime nap affect that night's sleep?",
+        "options": [
+          "It always improves nighttime sleep quality",
+          "It has no effect on nighttime sleep",
+          "It can disrupt or reduce nighttime sleep quality",
+          "It only affects sleep on weekends"
+        ],
+        "correctIndex": 2
+      }
+    ]
   },
   {
-    "id": "A4",
-    "question": "What pigment is primarily responsible for absorbing light energy in most plants?",
-    "options": [
-      "Carotenoid",
-      "Chlorophyll a",
-      "Xanthophyll",
-      "Phycocyanin"
+    "topicId": "impulse_buying",
+    "pretest": [
+      {
+        "itemId": "impulse_buying_pre_1",
+        "id": "impulse_buying_pre_1",
+        "concept": "countdown timers",
+        "question": "A shopping site shows a countdown timer: \"Sale ends in 10:00!\" What is this mainly designed to do?",
+        "options": [
+          "Help you plan your budget",
+          "Create urgency so you buy quickly",
+          "Show the store's exact closing time",
+          "Guarantee the lowest price of the year"
+        ],
+        "correctIndex": 1
+      },
+      {
+        "itemId": "impulse_buying_pre_2",
+        "id": "impulse_buying_pre_2",
+        "concept": "scarcity messages",
+        "question": "A shopping site shows \"Only 2 left in stock!\" What is this mainly designed to do?",
+        "options": [
+          "Warn you honestly about low supply",
+          "Help you compare prices with other stores",
+          "Create urgency so you buy quickly",
+          "Show the exact stock count for accuracy"
+        ],
+        "correctIndex": 2
+      },
+      {
+        "itemId": "impulse_buying_pre_3",
+        "id": "impulse_buying_pre_3",
+        "concept": "free-shipping thresholds",
+        "question": "An online store offers free delivery over $50, and your cart is $40. What is this tactic designed to do?",
+        "options": [
+          "Save you money overall",
+          "Push you to add items you didn't plan to buy",
+          "Reward loyal customers specifically",
+          "Lower the store's own shipping costs"
+        ],
+        "correctIndex": 1
+      },
+      {
+        "itemId": "impulse_buying_pre_4",
+        "id": "impulse_buying_pre_4",
+        "concept": "24-hour rule",
+        "question": "What is a simple, effective way to avoid an impulse purchase online?",
+        "options": [
+          "Buy immediately before the price changes",
+          "Follow every \"limited time\" prompt you see",
+          "Wait 24 hours before buying",
+          "Add it to the cart and check out right away"
+        ],
+        "correctIndex": 2
+      },
+      {
+        "itemId": "impulse_buying_pre_5",
+        "id": "impulse_buying_pre_5",
+        "concept": "limited-time deals",
+        "question": "Repeated \"limited time only\" deals on the same product are usually a sign that:",
+        "options": [
+          "The deal is genuinely rare and will not return",
+          "The urgency is a recurring sales tactic, not a true scarcity",
+          "The store is about to go out of business",
+          "The product will be discontinued permanently"
+        ],
+        "correctIndex": 1
+      }
     ],
-    "correctIndex": 1,
-    "concept": "light-absorption"
+    "items": [
+      {
+        "itemId": "impulse_buying_pre_1",
+        "id": "impulse_buying_pre_1",
+        "concept": "countdown timers",
+        "question": "A shopping site shows a countdown timer: \"Sale ends in 10:00!\" What is this mainly designed to do?",
+        "options": [
+          "Help you plan your budget",
+          "Create urgency so you buy quickly",
+          "Show the store's exact closing time",
+          "Guarantee the lowest price of the year"
+        ],
+        "correctIndex": 1
+      },
+      {
+        "itemId": "impulse_buying_pre_2",
+        "id": "impulse_buying_pre_2",
+        "concept": "scarcity messages",
+        "question": "A shopping site shows \"Only 2 left in stock!\" What is this mainly designed to do?",
+        "options": [
+          "Warn you honestly about low supply",
+          "Help you compare prices with other stores",
+          "Create urgency so you buy quickly",
+          "Show the exact stock count for accuracy"
+        ],
+        "correctIndex": 2
+      },
+      {
+        "itemId": "impulse_buying_pre_3",
+        "id": "impulse_buying_pre_3",
+        "concept": "free-shipping thresholds",
+        "question": "An online store offers free delivery over $50, and your cart is $40. What is this tactic designed to do?",
+        "options": [
+          "Save you money overall",
+          "Push you to add items you didn't plan to buy",
+          "Reward loyal customers specifically",
+          "Lower the store's own shipping costs"
+        ],
+        "correctIndex": 1
+      },
+      {
+        "itemId": "impulse_buying_pre_4",
+        "id": "impulse_buying_pre_4",
+        "concept": "24-hour rule",
+        "question": "What is a simple, effective way to avoid an impulse purchase online?",
+        "options": [
+          "Buy immediately before the price changes",
+          "Follow every \"limited time\" prompt you see",
+          "Wait 24 hours before buying",
+          "Add it to the cart and check out right away"
+        ],
+        "correctIndex": 2
+      },
+      {
+        "itemId": "impulse_buying_pre_5",
+        "id": "impulse_buying_pre_5",
+        "concept": "limited-time deals",
+        "question": "Repeated \"limited time only\" deals on the same product are usually a sign that:",
+        "options": [
+          "The deal is genuinely rare and will not return",
+          "The urgency is a recurring sales tactic, not a true scarcity",
+          "The store is about to go out of business",
+          "The product will be discontinued permanently"
+        ],
+        "correctIndex": 1
+      }
+    ]
   },
   {
-    "id": "A5",
-    "question": "Which of the following is a direct product of the light-dependent reactions?",
-    "options": [
-      "Glucose",
-      "Carbon dioxide",
-      "ATP and NADPH",
-      "Starch"
+    "topicId": "password_safety",
+    "pretest": [
+      {
+        "itemId": "password_safety_pre_1",
+        "id": "password_safety_pre_1",
+        "concept": "strong passwords",
+        "question": "Which of these is the strongest password?",
+        "options": [
+          "Password123",
+          "Your birthday",
+          "Your pet's name",
+          "A long phrase of four random words"
+        ],
+        "correctIndex": 3
+      },
+      {
+        "itemId": "password_safety_pre_2",
+        "id": "password_safety_pre_2",
+        "concept": "password reuse",
+        "question": "Why is reusing the same password on many accounts risky?",
+        "options": [
+          "It makes your accounts load slower",
+          "Websites will block you for reusing passwords",
+          "If one site is hacked, attackers can access your other accounts",
+          "Passwords expire faster when reused"
+        ],
+        "correctIndex": 2
+      },
+      {
+        "itemId": "password_safety_pre_3",
+        "id": "password_safety_pre_3",
+        "concept": "two-factor authentication",
+        "question": "What does two-factor authentication (2FA) do?",
+        "options": [
+          "Makes your password longer automatically",
+          "Adds a second step, so a stolen password alone isn't enough",
+          "Deletes old passwords for you",
+          "Stops all phishing emails automatically"
+        ],
+        "correctIndex": 1
+      },
+      {
+        "itemId": "password_safety_pre_4",
+        "id": "password_safety_pre_4",
+        "concept": "phishing awareness",
+        "question": "You get an urgent email asking you to \"verify your password\" by clicking a link. The safest response is to:",
+        "options": [
+          "Click the link immediately to avoid losing access",
+          "Reply with your password to confirm your identity",
+          "Go directly to the official site yourself instead of clicking the link",
+          "Forward the email to a friend for a second opinion"
+        ],
+        "correctIndex": 2
+      },
+      {
+        "itemId": "password_safety_pre_5",
+        "id": "password_safety_pre_5",
+        "concept": "password managers",
+        "question": "What is the main benefit of using a password manager?",
+        "options": [
+          "It lets you safely reuse one password everywhere",
+          "It can generate and store a unique strong password for every account",
+          "It removes the need for two-factor authentication",
+          "It guarantees your accounts can never be hacked"
+        ],
+        "correctIndex": 1
+      }
     ],
-    "correctIndex": 2,
-    "concept": "light-reactions"
-  },
-  {
-    "id": "A6",
-    "question": "Where does the Calvin cycle (light-independent reactions) take place?",
-    "options": [
-      "Thylakoid lumen",
-      "Outer membrane",
-      "Cytoplasm",
-      "Stroma of the chloroplast"
-    ],
-    "correctIndex": 3,
-    "concept": "calvin-cycle"
-  },
-  {
-    "id": "A7",
-    "question": "Which molecule is fixed (combined with CO₂) at the start of the Calvin cycle?",
-    "options": [
-      "ATP",
-      "RuBP (ribulose-1,5-bisphosphate)",
-      "G3P (glyceraldehyde-3-phosphate)",
-      "NADPH"
-    ],
-    "correctIndex": 1,
-    "concept": "calvin-cycle"
-  },
-  {
-    "id": "A8",
-    "question": "What gas is released as a by-product of the light-dependent reactions?",
-    "options": [
-      "Nitrogen",
-      "Carbon dioxide",
-      "Oxygen",
-      "Hydrogen"
-    ],
-    "correctIndex": 2,
-    "concept": "light-reactions"
-  },
-  {
-    "id": "A9",
-    "question": "Which wavelengths of light are most effectively absorbed by chlorophyll?",
-    "options": [
-      "Green and yellow",
-      "Red and blue-violet",
-      "Orange and indigo",
-      "Ultraviolet and infrared"
-    ],
-    "correctIndex": 1,
-    "concept": "light-absorption"
-  },
-  {
-    "id": "A10",
-    "question": "What is the role of water in the light-dependent stage of photosynthesis?",
-    "options": [
-      "It is used to build glucose directly",
-      "It acts as a carrier of electrons to the Calvin cycle",
-      "It is split (photolysed) to release electrons, protons, and oxygen",
-      "It absorbs light energy alongside chlorophyll"
-    ],
-    "correctIndex": 2,
-    "concept": "photolysis"
+    "items": [
+      {
+        "itemId": "password_safety_pre_1",
+        "id": "password_safety_pre_1",
+        "concept": "strong passwords",
+        "question": "Which of these is the strongest password?",
+        "options": [
+          "Password123",
+          "Your birthday",
+          "Your pet's name",
+          "A long phrase of four random words"
+        ],
+        "correctIndex": 3
+      },
+      {
+        "itemId": "password_safety_pre_2",
+        "id": "password_safety_pre_2",
+        "concept": "password reuse",
+        "question": "Why is reusing the same password on many accounts risky?",
+        "options": [
+          "It makes your accounts load slower",
+          "Websites will block you for reusing passwords",
+          "If one site is hacked, attackers can access your other accounts",
+          "Passwords expire faster when reused"
+        ],
+        "correctIndex": 2
+      },
+      {
+        "itemId": "password_safety_pre_3",
+        "id": "password_safety_pre_3",
+        "concept": "two-factor authentication",
+        "question": "What does two-factor authentication (2FA) do?",
+        "options": [
+          "Makes your password longer automatically",
+          "Adds a second step, so a stolen password alone isn't enough",
+          "Deletes old passwords for you",
+          "Stops all phishing emails automatically"
+        ],
+        "correctIndex": 1
+      },
+      {
+        "itemId": "password_safety_pre_4",
+        "id": "password_safety_pre_4",
+        "concept": "phishing awareness",
+        "question": "You get an urgent email asking you to \"verify your password\" by clicking a link. The safest response is to:",
+        "options": [
+          "Click the link immediately to avoid losing access",
+          "Reply with your password to confirm your identity",
+          "Go directly to the official site yourself instead of clicking the link",
+          "Forward the email to a friend for a second opinion"
+        ],
+        "correctIndex": 2
+      },
+      {
+        "itemId": "password_safety_pre_5",
+        "id": "password_safety_pre_5",
+        "concept": "password managers",
+        "question": "What is the main benefit of using a password manager?",
+        "options": [
+          "It lets you safely reuse one password everywhere",
+          "It can generate and store a unique strong password for every account",
+          "It removes the need for two-factor authentication",
+          "It guarantees your accounts can never be hacked"
+        ],
+        "correctIndex": 1
+      }
+    ]
   }
 ]

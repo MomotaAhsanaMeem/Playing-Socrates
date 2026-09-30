@@ -15,7 +15,7 @@ import type { SafeQuestion } from "@/app/pretest/page";
 
 interface PosttestClientProps {
   questions: SafeQuestion[];
-  form: "B";
+  form?: "A" | "B";
 }
 
 type Answers = Record<string, number>;
@@ -46,7 +46,7 @@ export default function PosttestClient({ questions, form }: PosttestClientProps)
 
     const timeTakenSeconds = Math.round((Date.now() - startTimeRef.current) / 1000);
     const payload = {
-      form,
+      ...(form ? { form } : {}),
       answers: questions.map((q) => ({
         itemId:      q.id,
         chosenIndex: answers[q.id],

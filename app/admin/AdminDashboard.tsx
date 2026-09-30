@@ -22,9 +22,29 @@ interface ConditionStats {
   calibrationMean: number | null;
 }
 
+export interface CrossingCell {
+  condition: string;
+  topicId: string;
+  topicName: string;
+  started: number;
+  completed: number;
+}
+
+export interface TopicStats {
+  topicId: string;
+  topicName: string;
+  started: number;
+  completed: number;
+  preMean: number | null;
+  postMean: number | null;
+  gainMean: number | null;
+}
+
 interface StatsResponse {
   stats:             ConditionStats[];
   totals:            { started: number; completed: number };
+  crossingTable?:    CrossingCell[];
+  topicStats?:       TopicStats[];
   includeIncomplete: boolean;
 }
 
@@ -50,34 +70,48 @@ export default function AdminDashboard() {
 
   const [stats, setStats]                       = useState<ConditionStats[] | null>(null);
   const [totals, setTotals]                     = useState<{ started: number; completed: number } | null>(null);
+  const [crossingTable, setCrossingTable]       = useState<CrossingCell[] | null>(null);
+  const [topicStats, setTopicStats]             = useState<TopicStats[] | null>(null);
   const [includeIncomplete, setIncludeIncomplete] = useState(false);
+  const [refreshKey, setRefreshKey]             = useState(0);
   const [isLoading, setIsLoading]               = useState(true);
   const [error, setError]                       = useState<string | null>(null);
   const [downloadingId, setDownloadingId]       = useState<string | null>(null);
 
-  const fetchStats = useCallback(async (inc: boolean) => {
-    setIsLoading(true);
-    setError(null);
-    try {
-      const res = await fetch(`/api/admin/stats?includeIncomplete=${inc}`);
-      if (res.status === 401) {
-        router.refresh(); // re-render; server will show login
-        return;
-      }
-      if (!res.ok) throw new Error(`Server error ${res.status}`);
-      const data: StatsResponse = await res.json();
-      setStats(data.stats);
-      setTotals(data.totals);
-    } catch (err: unknown) {
-      setError(err instanceof Error ? err.message : "Failed to load stats");
-    } finally {
-      setIsLoading(false);
-    }
-  }, [router]);
-
   useEffect(() => {
-    fetchStats(includeIncomplete);
-  }, [includeIncomplete, fetchStats]);
+    let cancelled = false;
+    async function load() {
+      setIsLoading(true);
+      setError(null);
+      try {
+        const res = await fetch(`/api/admin/stats?includeIncomplete=${includeIncomplete}`);
+        if (res.status === 401) {
+          router.refresh(); // re-render; server will show login
+          return;
+        }
+        if (!res.ok) throw new Error(`Server error ${res.status}`);
+        const data: StatsResponse = await res.json();
+        if (!cancelled) {
+          setStats(data.stats);
+          setTotals(data.totals);
+          setCrossingTable(data.crossingTable ?? null);
+          setTopicStats(data.topicStats ?? null);
+        }
+      } catch (err: unknown) {
+        if (!cancelled) {
+          setError(err instanceof Error ? err.message : "Failed to load stats");
+        }
+      } finally {
+        if (!cancelled) {
+          setIsLoading(false);
+        }
+      }
+    }
+    load();
+    return () => {
+      cancelled = true;
+    };
+  }, [includeIncomplete, refreshKey, router]);
 
   async function handleLogout() {
     await fetch("/api/admin/login", { method: "DELETE" });
@@ -166,7 +200,7 @@ export default function AdminDashboard() {
               Include incomplete participants
             </label>
             <button
-              onClick={() => fetchStats(includeIncomplete)}
+              onClick={() => setRefreshKey((k) => k + 1)}
               disabled={isLoading}
               className="flex items-center gap-1.5 px-3 py-2 rounded-lg border border-[var(--color-outline-variant)] text-[var(--color-on-surface-variant)] hover:border-[var(--color-primary)] hover:text-[var(--color-primary)] font-[var(--font-ui)] text-[length:var(--text-label-md)] transition-colors disabled:opacity-50"
               aria-label="Refresh statistics"
@@ -262,8 +296,8 @@ export default function AdminDashboard() {
                 {/* Metrics grid */}
                 <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-3">
                   {[
-                    { label: "Pre-score",      value: fmt(s.preMean),         unit: "/10" },
-                    { label: "Post-score",     value: fmt(s.postMean),        unit: "/10" },
+                    { label: "Pre-score",      value: fmt(s.preMean),         unit: "/5"  },
+                    { label: "Post-score",     value: fmt(s.postMean),        unit: "/5"  },
                     { label: "Learning gain",  value: fmt(s.gainMean),        unit: ""    },
                     { label: "Trust",          value: fmt(s.trustMean),       unit: "/7"  },
                     { label: "Cog load",       value: fmt(s.loadMean),        unit: "/100"},
@@ -286,6 +320,165 @@ export default function AdminDashboard() {
                 </div>
               </div>
             ))}
+          </div>
+        )}
+
+        {/* ── Condition × Topic Crossing Table & Per-Topic Learning Gain ─── */}
+        {crossingTable && (
+          <div className="space-y-8 mb-10">
+            <div className="rounded-2xl bg-[var(--color-surface)] border border-[var(--color-outline-variant)] p-6">
+              <div className="mb-4">
+                <h2 className="font-[var(--font-display)] text-[length:var(--text-title-md)] font-bold text-[var(--color-on-surface)] mb-1">
+                  Condition × Topic Crossing Table
+                </h2>
+                <p className="font-[var(--font-body)] text-[length:var(--text-body-sm)] text-[var(--color-on-surface-variant)]">
+                  Verifies the 3 × 5 coprime roster balancing (15 cells per cycle) alongside per-topic mean learning gains. Numbers show: {includeIncomplete ? "started" : "completed"} participants.
+                </p>
+              </div>
+
+              <div className="overflow-x-auto">
+                <table className="w-full border-collapse font-[var(--font-body)] text-[length:var(--text-body-sm)]">
+                  <thead>
+                    <tr className="bg-[var(--color-surface-container-low)]">
+                      <th scope="col" className="px-4 py-3 text-left font-[var(--font-ui)] text-[length:var(--text-label-md)] text-[var(--color-on-surface)] border-b border-[var(--color-outline-variant)]">
+                        Topic
+                      </th>
+                      {["socratic", "direct", "adaptive"].map((cond) => (
+                        <th
+                          key={cond}
+                          scope="col"
+                          className="px-4 py-3 text-center font-[var(--font-ui)] text-[length:var(--text-label-md)] capitalize text-[var(--color-on-surface)] border-b border-[var(--color-outline-variant)]"
+                        >
+                          {cond}
+                        </th>
+                      ))}
+                      <th scope="col" className="px-4 py-3 text-center font-[var(--font-ui)] text-[length:var(--text-label-md)] text-[var(--color-primary)] border-b border-[var(--color-outline-variant)]">
+                        Total
+                      </th>
+                      <th scope="col" className="px-4 py-3 text-center font-[var(--font-ui)] text-[length:var(--text-label-md)] text-[var(--color-on-surface)] border-b border-[var(--color-outline-variant)]">
+                        Mean Learning Gain
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {[
+                      { id: "procrastination", name: "Procrastination" },
+                      { id: "multitasking", name: "Multitasking" },
+                      { id: "sleep", name: "Sleep and Memory" },
+                      { id: "impulse_buying", name: "Impulse Buying" },
+                      { id: "password_safety", name: "Password Safety" },
+                    ].map((topic, idx) => {
+                      const rowCells = ["socratic", "direct", "adaptive"].map((cond) =>
+                        crossingTable.find((c) => c.condition === cond && c.topicId === topic.id)
+                      );
+                      const rowTotal = rowCells.reduce(
+                        (acc, c) => acc + (includeIncomplete ? (c?.started ?? 0) : (c?.completed ?? 0)),
+                        0
+                      );
+                      const tStat = topicStats?.find((t) => t.topicId === topic.id);
+
+                      return (
+                        <tr
+                          key={topic.id}
+                          className={idx % 2 === 0 ? "bg-[var(--color-surface)]" : "bg-[var(--color-surface-container-lowest)]"}
+                        >
+                          <td className="px-4 py-3 font-medium text-[var(--color-on-surface)] border-b border-[var(--color-outline-variant)]/40">
+                            {topic.name}
+                          </td>
+                          {rowCells.map((cell, cIdx) => {
+                            const count = includeIncomplete ? (cell?.started ?? 0) : (cell?.completed ?? 0);
+                            return (
+                              <td
+                                key={cIdx}
+                                className="px-4 py-3 text-center border-b border-[var(--color-outline-variant)]/40 text-[var(--color-on-surface)] font-semibold"
+                              >
+                                {count}
+                              </td>
+                            );
+                          })}
+                          <td className="px-4 py-3 text-center font-bold text-[var(--color-primary)] border-b border-[var(--color-outline-variant)]/40">
+                            {rowTotal}
+                          </td>
+                          <td className="px-4 py-3 text-center font-semibold border-b border-[var(--color-outline-variant)]/40 text-[var(--color-on-surface)]">
+                            {tStat?.gainMean !== null && tStat?.gainMean !== undefined ? (
+                              <span className={tStat.gainMean > 0 ? "text-emerald-400 font-bold" : tStat.gainMean < 0 ? "text-rose-400 font-bold" : ""}>
+                                {tStat.gainMean > 0 ? `+${tStat.gainMean.toFixed(2)}` : tStat.gainMean.toFixed(2)}
+                              </span>
+                            ) : "—"}
+                          </td>
+                        </tr>
+                      );
+                    })}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            {/* Per-Topic Learning Gains summary table */}
+            {topicStats && (
+              <div className="rounded-2xl bg-[var(--color-surface)] border border-[var(--color-outline-variant)] p-6">
+                <div className="mb-4">
+                  <h2 className="font-[var(--font-display)] text-[length:var(--text-title-md)] font-bold text-[var(--color-on-surface)] mb-1">
+                    Mean Learning Gain per Topic
+                  </h2>
+                  <p className="font-[var(--font-body)] text-[length:var(--text-body-sm)] text-[var(--color-on-surface-variant)]">
+                    Scored across the 5 items per topic. Pre-test and post-test scores are integers 0–5; learning gain = post_score − pre_score (range −5 to +5).
+                  </p>
+                </div>
+
+                <div className="overflow-x-auto">
+                  <table className="w-full border-collapse font-[var(--font-body)] text-[length:var(--text-body-sm)]">
+                    <thead>
+                      <tr className="bg-[var(--color-surface-container-low)]">
+                        <th scope="col" className="px-4 py-3 text-left font-[var(--font-ui)] text-[length:var(--text-label-md)] text-[var(--color-on-surface)] border-b border-[var(--color-outline-variant)]">
+                          Topic
+                        </th>
+                        <th scope="col" className="px-4 py-3 text-center font-[var(--font-ui)] text-[length:var(--text-label-md)] text-[var(--color-on-surface)] border-b border-[var(--color-outline-variant)]">
+                          {includeIncomplete ? "Started" : "Completed"}
+                        </th>
+                        <th scope="col" className="px-4 py-3 text-center font-[var(--font-ui)] text-[length:var(--text-label-md)] text-[var(--color-on-surface)] border-b border-[var(--color-outline-variant)]">
+                          Pre-Score Mean (/5)
+                        </th>
+                        <th scope="col" className="px-4 py-3 text-center font-[var(--font-ui)] text-[length:var(--text-label-md)] text-[var(--color-on-surface)] border-b border-[var(--color-outline-variant)]">
+                          Post-Score Mean (/5)
+                        </th>
+                        <th scope="col" className="px-4 py-3 text-center font-[var(--font-ui)] text-[length:var(--text-label-md)] text-[var(--color-primary)] border-b border-[var(--color-outline-variant)]">
+                          Mean Learning Gain (−5..+5)
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {topicStats.map((ts, idx) => (
+                        <tr
+                          key={ts.topicId}
+                          className={idx % 2 === 0 ? "bg-[var(--color-surface)]" : "bg-[var(--color-surface-container-lowest)]"}
+                        >
+                          <td className="px-4 py-3 font-medium text-[var(--color-on-surface)] border-b border-[var(--color-outline-variant)]/40">
+                            {ts.topicName}
+                          </td>
+                          <td className="px-4 py-3 text-center border-b border-[var(--color-outline-variant)]/40 text-[var(--color-on-surface)]">
+                            {includeIncomplete ? ts.started : ts.completed}
+                          </td>
+                          <td className="px-4 py-3 text-center border-b border-[var(--color-outline-variant)]/40 text-[var(--color-on-surface)]">
+                            {fmt(ts.preMean)}
+                          </td>
+                          <td className="px-4 py-3 text-center border-b border-[var(--color-outline-variant)]/40 text-[var(--color-on-surface)]">
+                            {fmt(ts.postMean)}
+                          </td>
+                          <td className="px-4 py-3 text-center font-bold border-b border-[var(--color-outline-variant)]/40">
+                            {ts.gainMean !== null && ts.gainMean !== undefined ? (
+                              <span className={ts.gainMean > 0 ? "text-emerald-400" : ts.gainMean < 0 ? "text-rose-400" : "text-[var(--color-on-surface)]"}>
+                                {ts.gainMean > 0 ? `+${ts.gainMean.toFixed(2)}` : ts.gainMean.toFixed(2)}
+                              </span>
+                            ) : "—"}
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            )}
           </div>
         )}
 

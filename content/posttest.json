@@ -1,122 +1,687 @@
 [
   {
-    "id": "B1",
-    "question": "Which cellular structure contains the pigments that capture light for photosynthesis?",
-    "options": [
-      "Nucleus",
-      "Chloroplast",
-      "Lysosome",
-      "Golgi apparatus"
+    "topicId": "procrastination",
+    "posttest": [
+      {
+        "itemId": "procrastination_post_1",
+        "id": "procrastination_post_1",
+        "concept": "cause",
+        "question": "Which best explains why students put off assignments?",
+        "options": [
+          "They avoid the uncomfortable feelings the task brings",
+          "They are not intelligent enough",
+          "They enjoy last-minute pressure",
+          "They have too much free time"
+        ],
+        "correctIndex": 0
+      },
+      {
+        "itemId": "procrastination_post_2",
+        "id": "procrastination_post_2",
+        "concept": "effect of delay",
+        "question": "What tends to happen the longer someone postpones a task?",
+        "options": [
+          "The task feels less urgent over time",
+          "Anxiety and time pressure usually build up",
+          "The quality of the final work usually improves",
+          "It has no real impact on the outcome"
+        ],
+        "correctIndex": 1
+      },
+      {
+        "itemId": "procrastination_post_3",
+        "id": "procrastination_post_3",
+        "concept": "best way to start",
+        "question": "You've been avoiding writing a report. What is the best first step?",
+        "options": [
+          "Wait for the perfect mood",
+          "Break it into small steps and start with the easiest",
+          "Stay up all night before the deadline",
+          "Reorganize your desk until you feel ready"
+        ],
+        "correctIndex": 1
+      },
+      {
+        "itemId": "procrastination_post_4",
+        "id": "procrastination_post_4",
+        "concept": "deadline behavior",
+        "question": "What commonly happens right before a deadline for someone who procrastinated?",
+        "options": [
+          "A sudden burst of rushed, high-pressure work",
+          "A slow and relaxed finish",
+          "The task gets abandoned entirely",
+          "The deadline stops mattering"
+        ],
+        "correctIndex": 0
+      },
+      {
+        "itemId": "procrastination_post_5",
+        "id": "procrastination_post_5",
+        "concept": "breaking tasks down",
+        "question": "Why does splitting a big assignment into smaller parts usually help?",
+        "options": [
+          "It makes the workload heavier",
+          "Each small part feels more manageable, which makes starting easier",
+          "It guarantees a better grade",
+          "It only works for group projects"
+        ],
+        "correctIndex": 1
+      }
     ],
-    "correctIndex": 1,
-    "concept": "chloroplast-structure"
+    "items": [
+      {
+        "itemId": "procrastination_post_1",
+        "id": "procrastination_post_1",
+        "concept": "cause",
+        "question": "Which best explains why students put off assignments?",
+        "options": [
+          "They avoid the uncomfortable feelings the task brings",
+          "They are not intelligent enough",
+          "They enjoy last-minute pressure",
+          "They have too much free time"
+        ],
+        "correctIndex": 0
+      },
+      {
+        "itemId": "procrastination_post_2",
+        "id": "procrastination_post_2",
+        "concept": "effect of delay",
+        "question": "What tends to happen the longer someone postpones a task?",
+        "options": [
+          "The task feels less urgent over time",
+          "Anxiety and time pressure usually build up",
+          "The quality of the final work usually improves",
+          "It has no real impact on the outcome"
+        ],
+        "correctIndex": 1
+      },
+      {
+        "itemId": "procrastination_post_3",
+        "id": "procrastination_post_3",
+        "concept": "best way to start",
+        "question": "You've been avoiding writing a report. What is the best first step?",
+        "options": [
+          "Wait for the perfect mood",
+          "Break it into small steps and start with the easiest",
+          "Stay up all night before the deadline",
+          "Reorganize your desk until you feel ready"
+        ],
+        "correctIndex": 1
+      },
+      {
+        "itemId": "procrastination_post_4",
+        "id": "procrastination_post_4",
+        "concept": "deadline behavior",
+        "question": "What commonly happens right before a deadline for someone who procrastinated?",
+        "options": [
+          "A sudden burst of rushed, high-pressure work",
+          "A slow and relaxed finish",
+          "The task gets abandoned entirely",
+          "The deadline stops mattering"
+        ],
+        "correctIndex": 0
+      },
+      {
+        "itemId": "procrastination_post_5",
+        "id": "procrastination_post_5",
+        "concept": "breaking tasks down",
+        "question": "Why does splitting a big assignment into smaller parts usually help?",
+        "options": [
+          "It makes the workload heavier",
+          "Each small part feels more manageable, which makes starting easier",
+          "It guarantees a better grade",
+          "It only works for group projects"
+        ],
+        "correctIndex": 1
+      }
+    ]
   },
   {
-    "id": "B2",
-    "question": "Which set of reactants is consumed during photosynthesis?",
-    "options": [
-      "Glucose and oxygen",
-      "Water and glucose",
-      "Carbon dioxide and water",
-      "Oxygen and carbon dioxide"
+    "topicId": "multitasking",
+    "posttest": [
+      {
+        "itemId": "multitasking_post_1",
+        "id": "multitasking_post_1",
+        "concept": "does it work",
+        "question": "When someone appears to \"do two things at once,\" what is actually happening in the brain?",
+        "options": [
+          "Both tasks are processed simultaneously with full attention",
+          "Attention is rapidly switching back and forth between the tasks",
+          "One task is processed subconsciously with zero effort",
+          "The brain permanently splits into two independent streams"
+        ],
+        "correctIndex": 1
+      },
+      {
+        "itemId": "multitasking_post_2",
+        "id": "multitasking_post_2",
+        "concept": "errors",
+        "question": "Which is most likely when you scroll social media while studying?",
+        "options": [
+          "You learn the material more deeply",
+          "You study faster",
+          "You study less effectively",
+          "Your focus gets stronger"
+        ],
+        "correctIndex": 2
+      },
+      {
+        "itemId": "multitasking_post_3",
+        "id": "multitasking_post_3",
+        "concept": "comprehension while distracted",
+        "question": "Trying to follow a conversation while reading something important closely tends to:",
+        "options": [
+          "Strengthen memory of the reading",
+          "Weaken understanding of the reading, the conversation, or both",
+          "Have no measurable effect",
+          "Only affect long-term memory, not immediate understanding"
+        ],
+        "correctIndex": 1
+      },
+      {
+        "itemId": "multitasking_post_4",
+        "id": "multitasking_post_4",
+        "concept": "speed myth",
+        "question": "People who multitask through several small tasks usually finish everything:",
+        "options": [
+          "Faster than doing them one at a time",
+          "Slower overall, due to the cost of switching",
+          "In exactly the same time either way",
+          "It depends only on typing speed"
+        ],
+        "correctIndex": 1
+      },
+      {
+        "itemId": "multitasking_post_5",
+        "id": "multitasking_post_5",
+        "concept": "best study setup",
+        "question": "Which habit is best for finishing homework quickly and accurately?",
+        "options": [
+          "Keeping notifications on while you work",
+          "Doing several tasks at once",
+          "Watching videos while you read",
+          "Working on one task at a time with distractions removed"
+        ],
+        "correctIndex": 3
+      }
     ],
-    "correctIndex": 2,
-    "concept": "overall-equation"
+    "items": [
+      {
+        "itemId": "multitasking_post_1",
+        "id": "multitasking_post_1",
+        "concept": "does it work",
+        "question": "When someone appears to \"do two things at once,\" what is actually happening in the brain?",
+        "options": [
+          "Both tasks are processed simultaneously with full attention",
+          "Attention is rapidly switching back and forth between the tasks",
+          "One task is processed subconsciously with zero effort",
+          "The brain permanently splits into two independent streams"
+        ],
+        "correctIndex": 1
+      },
+      {
+        "itemId": "multitasking_post_2",
+        "id": "multitasking_post_2",
+        "concept": "errors",
+        "question": "Which is most likely when you scroll social media while studying?",
+        "options": [
+          "You learn the material more deeply",
+          "You study faster",
+          "You study less effectively",
+          "Your focus gets stronger"
+        ],
+        "correctIndex": 2
+      },
+      {
+        "itemId": "multitasking_post_3",
+        "id": "multitasking_post_3",
+        "concept": "comprehension while distracted",
+        "question": "Trying to follow a conversation while reading something important closely tends to:",
+        "options": [
+          "Strengthen memory of the reading",
+          "Weaken understanding of the reading, the conversation, or both",
+          "Have no measurable effect",
+          "Only affect long-term memory, not immediate understanding"
+        ],
+        "correctIndex": 1
+      },
+      {
+        "itemId": "multitasking_post_4",
+        "id": "multitasking_post_4",
+        "concept": "speed myth",
+        "question": "People who multitask through several small tasks usually finish everything:",
+        "options": [
+          "Faster than doing them one at a time",
+          "Slower overall, due to the cost of switching",
+          "In exactly the same time either way",
+          "It depends only on typing speed"
+        ],
+        "correctIndex": 1
+      },
+      {
+        "itemId": "multitasking_post_5",
+        "id": "multitasking_post_5",
+        "concept": "best study setup",
+        "question": "Which habit is best for finishing homework quickly and accurately?",
+        "options": [
+          "Keeping notifications on while you work",
+          "Doing several tasks at once",
+          "Watching videos while you read",
+          "Working on one task at a time with distractions removed"
+        ],
+        "correctIndex": 3
+      }
+    ]
   },
   {
-    "id": "B3",
-    "question": "The light-dependent reactions are associated with which internal chloroplast structure?",
-    "options": [
-      "Stroma",
-      "Thylakoid membranes",
-      "Outer envelope",
-      "Chloroplast DNA"
+    "topicId": "sleep",
+    "posttest": [
+      {
+        "itemId": "sleep_post_1",
+        "id": "sleep_post_1",
+        "concept": "role in memory",
+        "question": "After studying for an exam, which habit helps you remember the most?",
+        "options": [
+          "Getting a full night of sleep",
+          "Staying awake to review again",
+          "Drinking extra coffee instead of sleeping",
+          "Studying until dawn"
+        ],
+        "correctIndex": 0
+      },
+      {
+        "itemId": "sleep_post_2",
+        "id": "sleep_post_2",
+        "concept": "all-nighters",
+        "question": "Compared to sleeping normally, pulling an all-nighter to study more tends to:",
+        "options": [
+          "Improve exam performance",
+          "Have no real effect on performance",
+          "Hurt exam performance despite the extra study time",
+          "Only help with multiple-choice questions"
+        ],
+        "correctIndex": 2
+      },
+      {
+        "itemId": "sleep_post_3",
+        "id": "sleep_post_3",
+        "concept": "sleep before exams",
+        "question": "Which choice is most likely to hurt your exam performance?",
+        "options": [
+          "Sleeping 8 hours before the exam",
+          "Skipping sleep to cram more material",
+          "Reviewing during the day, then resting",
+          "Eating a normal meal before the exam"
+        ],
+        "correctIndex": 1
+      },
+      {
+        "itemId": "sleep_post_4",
+        "id": "sleep_post_4",
+        "concept": "deprivation and reasoning",
+        "question": "A student who is sleep-deprived on exam day will most likely notice a decline in:",
+        "options": [
+          "Only their mood, not their thinking",
+          "Their recall and problem-solving ability",
+          "Nothing, if they drink coffee",
+          "Only their handwriting speed"
+        ],
+        "correctIndex": 1
+      },
+      {
+        "itemId": "sleep_post_5",
+        "id": "sleep_post_5",
+        "concept": "naps",
+        "question": "What's true about taking a very long nap in the late afternoon before bed?",
+        "options": [
+          "It guarantees better sleep that night",
+          "It can make it harder to sleep well that night",
+          "It has zero connection to nighttime sleep",
+          "It only matters for people under age 18"
+        ],
+        "correctIndex": 1
+      }
     ],
-    "correctIndex": 1,
-    "concept": "light-reactions"
+    "items": [
+      {
+        "itemId": "sleep_post_1",
+        "id": "sleep_post_1",
+        "concept": "role in memory",
+        "question": "After studying for an exam, which habit helps you remember the most?",
+        "options": [
+          "Getting a full night of sleep",
+          "Staying awake to review again",
+          "Drinking extra coffee instead of sleeping",
+          "Studying until dawn"
+        ],
+        "correctIndex": 0
+      },
+      {
+        "itemId": "sleep_post_2",
+        "id": "sleep_post_2",
+        "concept": "all-nighters",
+        "question": "Compared to sleeping normally, pulling an all-nighter to study more tends to:",
+        "options": [
+          "Improve exam performance",
+          "Have no real effect on performance",
+          "Hurt exam performance despite the extra study time",
+          "Only help with multiple-choice questions"
+        ],
+        "correctIndex": 2
+      },
+      {
+        "itemId": "sleep_post_3",
+        "id": "sleep_post_3",
+        "concept": "sleep before exams",
+        "question": "Which choice is most likely to hurt your exam performance?",
+        "options": [
+          "Sleeping 8 hours before the exam",
+          "Skipping sleep to cram more material",
+          "Reviewing during the day, then resting",
+          "Eating a normal meal before the exam"
+        ],
+        "correctIndex": 1
+      },
+      {
+        "itemId": "sleep_post_4",
+        "id": "sleep_post_4",
+        "concept": "deprivation and reasoning",
+        "question": "A student who is sleep-deprived on exam day will most likely notice a decline in:",
+        "options": [
+          "Only their mood, not their thinking",
+          "Their recall and problem-solving ability",
+          "Nothing, if they drink coffee",
+          "Only their handwriting speed"
+        ],
+        "correctIndex": 1
+      },
+      {
+        "itemId": "sleep_post_5",
+        "id": "sleep_post_5",
+        "concept": "naps",
+        "question": "What's true about taking a very long nap in the late afternoon before bed?",
+        "options": [
+          "It guarantees better sleep that night",
+          "It can make it harder to sleep well that night",
+          "It has zero connection to nighttime sleep",
+          "It only matters for people under age 18"
+        ],
+        "correctIndex": 1
+      }
+    ]
   },
   {
-    "id": "B4",
-    "question": "Which photosynthetic pigment is found in greatest abundance in most green plants?",
-    "options": [
-      "Phycoerythrin",
-      "Beta-carotene",
-      "Chlorophyll a",
-      "Anthocyanin"
+    "topicId": "impulse_buying",
+    "posttest": [
+      {
+        "itemId": "impulse_buying_post_1",
+        "id": "impulse_buying_post_1",
+        "concept": "countdown timers",
+        "question": "A website shows a countdown timer: \"Sale ends in 10:00!\" What is its main purpose?",
+        "options": [
+          "To tell you the time",
+          "To pressure you into deciding fast",
+          "To help you plan your budget",
+          "To make sure prices are fair"
+        ],
+        "correctIndex": 1
+      },
+      {
+        "itemId": "impulse_buying_post_2",
+        "id": "impulse_buying_post_2",
+        "concept": "scarcity messages",
+        "question": "A product page says \"Selling fast — only a few left!\" This message is mainly meant to:",
+        "options": [
+          "Give you an accurate live inventory count",
+          "Push you toward a quicker purchase decision",
+          "Warn you the product may be defective",
+          "Help you decide between stores"
+        ],
+        "correctIndex": 1
+      },
+      {
+        "itemId": "impulse_buying_post_3",
+        "id": "impulse_buying_post_3",
+        "concept": "free-shipping thresholds",
+        "question": "A store offers free shipping over $60 while your cart sits at $52. This threshold is designed to:",
+        "options": [
+          "Encourage you to add more to your order",
+          "Reduce the total amount you spend",
+          "Reward returning customers only",
+          "Cover the store's warehouse costs"
+        ],
+        "correctIndex": 0
+      },
+      {
+        "itemId": "impulse_buying_post_4",
+        "id": "impulse_buying_post_4",
+        "concept": "24-hour rule",
+        "question": "What is the best way to avoid an impulse purchase online?",
+        "options": [
+          "Buy immediately before the price changes",
+          "Follow the \"limited time\" prompts",
+          "Wait 24 hours before buying",
+          "Add it to the cart and check out quickly"
+        ],
+        "correctIndex": 2
+      },
+      {
+        "itemId": "impulse_buying_post_5",
+        "id": "impulse_buying_post_5",
+        "concept": "limited-time deals",
+        "question": "When a \"flash sale\" for the same item keeps reappearing every few weeks, this most likely shows:",
+        "options": [
+          "The scarcity claim is a routine marketing tactic",
+          "The item is genuinely running out permanently",
+          "The store made a pricing mistake each time",
+          "The deal is a one-time exception"
+        ],
+        "correctIndex": 0
+      }
     ],
-    "correctIndex": 2,
-    "concept": "light-absorption"
+    "items": [
+      {
+        "itemId": "impulse_buying_post_1",
+        "id": "impulse_buying_post_1",
+        "concept": "countdown timers",
+        "question": "A website shows a countdown timer: \"Sale ends in 10:00!\" What is its main purpose?",
+        "options": [
+          "To tell you the time",
+          "To pressure you into deciding fast",
+          "To help you plan your budget",
+          "To make sure prices are fair"
+        ],
+        "correctIndex": 1
+      },
+      {
+        "itemId": "impulse_buying_post_2",
+        "id": "impulse_buying_post_2",
+        "concept": "scarcity messages",
+        "question": "A product page says \"Selling fast — only a few left!\" This message is mainly meant to:",
+        "options": [
+          "Give you an accurate live inventory count",
+          "Push you toward a quicker purchase decision",
+          "Warn you the product may be defective",
+          "Help you decide between stores"
+        ],
+        "correctIndex": 1
+      },
+      {
+        "itemId": "impulse_buying_post_3",
+        "id": "impulse_buying_post_3",
+        "concept": "free-shipping thresholds",
+        "question": "A store offers free shipping over $60 while your cart sits at $52. This threshold is designed to:",
+        "options": [
+          "Encourage you to add more to your order",
+          "Reduce the total amount you spend",
+          "Reward returning customers only",
+          "Cover the store's warehouse costs"
+        ],
+        "correctIndex": 0
+      },
+      {
+        "itemId": "impulse_buying_post_4",
+        "id": "impulse_buying_post_4",
+        "concept": "24-hour rule",
+        "question": "What is the best way to avoid an impulse purchase online?",
+        "options": [
+          "Buy immediately before the price changes",
+          "Follow the \"limited time\" prompts",
+          "Wait 24 hours before buying",
+          "Add it to the cart and check out quickly"
+        ],
+        "correctIndex": 2
+      },
+      {
+        "itemId": "impulse_buying_post_5",
+        "id": "impulse_buying_post_5",
+        "concept": "limited-time deals",
+        "question": "When a \"flash sale\" for the same item keeps reappearing every few weeks, this most likely shows:",
+        "options": [
+          "The scarcity claim is a routine marketing tactic",
+          "The item is genuinely running out permanently",
+          "The store made a pricing mistake each time",
+          "The deal is a one-time exception"
+        ],
+        "correctIndex": 0
+      }
+    ]
   },
   {
-    "id": "B5",
-    "question": "Which energy-carrier molecules are produced by the light-dependent reactions and then used in the Calvin cycle?",
-    "options": [
-      "Glucose and glycerol",
-      "ADP and NAD⁺",
-      "ATP and NADPH",
-      "RuBP and G3P"
+    "topicId": "password_safety",
+    "posttest": [
+      {
+        "itemId": "password_safety_post_1",
+        "id": "password_safety_post_1",
+        "concept": "strong passwords",
+        "question": "Which password is safest to use for your email?",
+        "options": [
+          "Your name plus your birth year",
+          "A long, unique passphrase you don't use anywhere else",
+          "\"12345678\"",
+          "The same password you use for social media"
+        ],
+        "correctIndex": 1
+      },
+      {
+        "itemId": "password_safety_post_2",
+        "id": "password_safety_post_2",
+        "concept": "password reuse",
+        "question": "What's the main danger of using one password across multiple sites?",
+        "options": [
+          "A breach on one site can expose all your other accounts",
+          "Your accounts will run slower",
+          "You'll be asked to change it more often",
+          "It has no real downside if the password is strong"
+        ],
+        "correctIndex": 0
+      },
+      {
+        "itemId": "password_safety_post_3",
+        "id": "password_safety_post_3",
+        "concept": "two-factor authentication",
+        "question": "How does two-factor authentication mainly improve account security?",
+        "options": [
+          "By making the password itself longer",
+          "By requiring an extra verification step beyond the password",
+          "By automatically detecting phishing emails",
+          "By storing your password in an encrypted file"
+        ],
+        "correctIndex": 1
+      },
+      {
+        "itemId": "password_safety_post_4",
+        "id": "password_safety_post_4",
+        "concept": "phishing awareness",
+        "question": "An email claims your account will be suspended unless you \"confirm your password\" through a link right now. What should you do?",
+        "options": [
+          "Click the link quickly before the deadline",
+          "Enter your password to keep the account active",
+          "Visit the official website directly rather than using the email's link",
+          "Ignore it completely with no further action"
+        ],
+        "correctIndex": 2
+      },
+      {
+        "itemId": "password_safety_post_5",
+        "id": "password_safety_post_5",
+        "concept": "password managers",
+        "question": "Why might someone use a password manager instead of memorizing passwords?",
+        "options": [
+          "It allows using the same easy password everywhere safely",
+          "It can create and remember a unique, strong password per site",
+          "It eliminates the need to ever log in again",
+          "It replaces the need for a password entirely"
+        ],
+        "correctIndex": 1
+      }
     ],
-    "correctIndex": 2,
-    "concept": "light-reactions"
-  },
-  {
-    "id": "B6",
-    "question": "In which region of the chloroplast do the light-independent (Calvin cycle) reactions occur?",
-    "options": [
-      "Thylakoid lumen",
-      "Stroma",
-      "Cell wall",
-      "Plasma membrane"
-    ],
-    "correctIndex": 1,
-    "concept": "calvin-cycle"
-  },
-  {
-    "id": "B7",
-    "question": "What is the carbon-dioxide acceptor molecule regenerated at the end of each turn of the Calvin cycle?",
-    "options": [
-      "Glucose",
-      "ATP",
-      "G3P (glyceraldehyde-3-phosphate)",
-      "RuBP (ribulose-1,5-bisphosphate)"
-    ],
-    "correctIndex": 3,
-    "concept": "calvin-cycle"
-  },
-  {
-    "id": "B8",
-    "question": "Which gas, produced during the light stage, is released into the atmosphere?",
-    "options": [
-      "Carbon dioxide",
-      "Nitrogen",
-      "Oxygen",
-      "Water vapour"
-    ],
-    "correctIndex": 2,
-    "concept": "light-reactions"
-  },
-  {
-    "id": "B9",
-    "question": "Chlorophyll appears green because it mainly reflects which wavelength range?",
-    "options": [
-      "Red light",
-      "Blue light",
-      "Green light",
-      "Ultraviolet light"
-    ],
-    "correctIndex": 2,
-    "concept": "light-absorption"
-  },
-  {
-    "id": "B10",
-    "question": "During photolysis in the light-dependent stage, water molecules are split to provide which of the following?",
-    "options": [
-      "CO₂ and ATP",
-      "Electrons, H⁺ ions, and O₂",
-      "NADPH and glucose",
-      "RuBP and G3P"
-    ],
-    "correctIndex": 1,
-    "concept": "photolysis"
+    "items": [
+      {
+        "itemId": "password_safety_post_1",
+        "id": "password_safety_post_1",
+        "concept": "strong passwords",
+        "question": "Which password is safest to use for your email?",
+        "options": [
+          "Your name plus your birth year",
+          "A long, unique passphrase you don't use anywhere else",
+          "\"12345678\"",
+          "The same password you use for social media"
+        ],
+        "correctIndex": 1
+      },
+      {
+        "itemId": "password_safety_post_2",
+        "id": "password_safety_post_2",
+        "concept": "password reuse",
+        "question": "What's the main danger of using one password across multiple sites?",
+        "options": [
+          "A breach on one site can expose all your other accounts",
+          "Your accounts will run slower",
+          "You'll be asked to change it more often",
+          "It has no real downside if the password is strong"
+        ],
+        "correctIndex": 0
+      },
+      {
+        "itemId": "password_safety_post_3",
+        "id": "password_safety_post_3",
+        "concept": "two-factor authentication",
+        "question": "How does two-factor authentication mainly improve account security?",
+        "options": [
+          "By making the password itself longer",
+          "By requiring an extra verification step beyond the password",
+          "By automatically detecting phishing emails",
+          "By storing your password in an encrypted file"
+        ],
+        "correctIndex": 1
+      },
+      {
+        "itemId": "password_safety_post_4",
+        "id": "password_safety_post_4",
+        "concept": "phishing awareness",
+        "question": "An email claims your account will be suspended unless you \"confirm your password\" through a link right now. What should you do?",
+        "options": [
+          "Click the link quickly before the deadline",
+          "Enter your password to keep the account active",
+          "Visit the official website directly rather than using the email's link",
+          "Ignore it completely with no further action"
+        ],
+        "correctIndex": 2
+      },
+      {
+        "itemId": "password_safety_post_5",
+        "id": "password_safety_post_5",
+        "concept": "password managers",
+        "question": "Why might someone use a password manager instead of memorizing passwords?",
+        "options": [
+          "It allows using the same easy password everywhere safely",
+          "It can create and remember a unique, strong password per site",
+          "It eliminates the need to ever log in again",
+          "It replaces the need for a password entirely"
+        ],
+        "correctIndex": 1
+      }
+    ]
   }
 ]

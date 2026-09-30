@@ -15,7 +15,7 @@ import type { Stage } from "@/config/study";
 
 interface PretestClientProps {
   questions: SafeQuestion[];
-  form: "A" | "B";
+  form?: "A" | "B";
 }
 
 type Answers = Record<string, number>; // itemId → chosenIndex
@@ -29,10 +29,10 @@ export default function PretestClient({ questions, form }: PretestClientProps) {
   const [error, setError]         = useState<string | null>(null);
   const [submitted, setSubmitted] = useState(false);
 
-  const isPretest  = form === "A";
-  const stage: Stage = isPretest ? "pretest" : "posttest";
-  const title  = isPretest ? "Pre-Test Assessment" : "Post-Test Assessment";
-  const stageNum = isPretest ? 3 : 5;
+  const isPretest  = true;
+  const stage: Stage = "pretest";
+  const title  = "Pre-Test Assessment";
+  const stageNum = 3;
   const totalItems = questions.length;
   const answeredCount = Object.keys(answers).length;
   const allAnswered = answeredCount === totalItems;
@@ -49,7 +49,7 @@ export default function PretestClient({ questions, form }: PretestClientProps) {
 
     const timeTakenSeconds = Math.round((Date.now() - startTimeRef.current) / 1000);
     const payload = {
-      form,
+      ...(form ? { form } : {}),
       answers: questions.map((q) => ({
         itemId:       q.id,
         chosenIndex:  answers[q.id],

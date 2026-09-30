@@ -25,6 +25,7 @@ interface DebriefClientProps {
 
 const TURN_LABELS: Record<number, string> = {
   1: "Turn 2",
+  3: "Turn 4",
   4: "Turn 5",
   6: "Turn 7",
 };
